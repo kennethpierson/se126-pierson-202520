@@ -1,0 +1,17 @@
+
+import os
+
+os.system('cls')
+sentence = "25.115.20.03"
+
+sentence_new = sentence.split(".")
+
+print(f"Original: {sentence}")
+print(f".split(): {sentence_new[0]}")
+
+
+first = sentence_new[0]
+print(first)
+if first > 0 and first < 128:
+    ip_class = "A"
+    mask = "225.0.0.0"
