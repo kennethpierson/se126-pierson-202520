@@ -1,3 +1,25 @@
+#Ken Pierson
+#SE126.04
+#W3D2 In Class Lab
+#1-23-2025
+
+#PROGRAM PROMPT:  Your CIO (Chief Information Officer) has asked you to determine how much it would cost the company to replace all machines that are from 2016 and earlier. He plans on spending not more than $2,000 dollars for desktops and $1,500 for laptops.  Store the data from the file lab3a.csv into lists.  Then process the lists to reprint all of the file information (exactly as you did in Lab 2) and also produce an end report that lists the number of desktops that will be replaced, the cost to replace the desktops, the number of laptops that will be replaced, and the cost to replace the laptops.
+
+#VARIABLE DICTIONARY:
+#total_computers    initializes the variable
+#file               variable for the csv file
+#type               variable for the type of computer
+#full_type          used for when the type variable is converted to the full word
+#brand              variable for the computer brand
+#full_brand         used for when the brand variable is converted to the full word
+#cpu                variable for the computer cpu
+#ram                variable for the computer ram
+#disk_1             variable for the computer 1st hard drive
+#num_hd             variable for the number of hard drives in the computer
+#disk_2             variable for the computer 2nd hard drive if it has one
+#op_sys             variable for the computer operating system
+#year               variable for year the computer was purchased
+
 #--IMPORTS---------------------------------------------
 import csv
 
@@ -55,8 +77,11 @@ print("-" * 80)
 for i in range(0, len(comp_type)):
     print(f"{comp_type[i]:<10} {comp_mfr[i]:<10} {comp_cpu[i]:<5} {comp_ram[i]:<5} {hd_1[i]:<10} {number_hd[i]:<10} {hd_2[i]:<10} {os[i]:<5} {yr[i]}")
 
+#initialize the counting variables
 old_desktops = 0
 old_laptops = 0
+
+#for loop for counting the number of old desktops and laptops
 
 for i in range(0, len(yr)):
     if int(yr[i]) <= 16:
@@ -69,7 +94,7 @@ for i in range(0, len(yr)):
 print("-" * 80)
 print(f"\nTotal number of computers: {len(comp_type)} ")
 print(f"Total number of desktops to replace: {old_desktops} ")
-print(f"Total cost for desktop replacement: ${old_desktops * 2000:.2f}")
+print(f"Total cost for desktop replacement: ${old_desktops * 2000:.2f}") #Give the total cost to replace desktops
 print(f"Total number of laptops to replace:  {old_laptops} ")
-print(f"Total cost for laptop replacement:  ${old_laptops * 1500:.2f}")
+print(f"Total cost for laptop replacement:  ${old_laptops * 1500:.2f}") #Give the total cost to replace laptops
 print("\nThank you for using the program. Goodbye.\n")
