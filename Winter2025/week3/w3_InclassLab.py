@@ -75,6 +75,7 @@ with open("text_files/filehandling.csv") as csvfile:
 print(f"\n{"Type":<10} {"Brand":<10} {"CPU":<5} {"RAM":<5} {"1st Disk":<10} {"No HDD":<10}{"2nd Disk":<10}  {"OS":<5} {"YR"}")
 print("-" * 80)
 for i in range(0, len(comp_type)):
+    #for every item, index will start at 0 and run up to (not including) the length (# of items)
     print(f"{comp_type[i]:<10} {comp_mfr[i]:<10} {comp_cpu[i]:<5} {comp_ram[i]:<5} {hd_1[i]:<10} {number_hd[i]:<10} {hd_2[i]:<10} {os[i]:<5} {yr[i]}")
 
 #initialize the counting variables

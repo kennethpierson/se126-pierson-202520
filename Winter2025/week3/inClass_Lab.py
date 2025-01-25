@@ -43,15 +43,19 @@ def modify_brand(bnd):
 #--MAIN EXECUTING CODE---------------------------------
 
 #create empty list for every potential field in the file
-comp_type = []      #computer type Desktop or Laptop
-comp_mfr = []       #for the computer manufacturer
-comp_cpu = []       #processor type
-comp_ram = []       #total ram
-hd_1 = []           #hard drive one
-hd_amount = []      #number of hard drives
-hd_2 = []           #hard drive two
-os = []             #operating system
-yr = []             #year the machine was purchased
+type = []            #computer type Desktop or Laptop
+full_type = []
+brand = []           #for the computer manufacturer
+full_brand = []
+cpu = []             #processor type
+ram = []             #total ram
+disk_1 = []          #hard drive one
+num_hd = []          #number of hard drives
+disk_2 = []          #hard drive two
+op_sys = []          #operating system
+year = []            #year the machine was purchased
+
+
 
 #initialize the counting variables
 total_computers = 0 
@@ -68,22 +72,22 @@ with open("text_files/filehandling.csv") as csvfile:
         #takes the information out of the file and stores it
         type = record[0]
         #calls the function
-        full_type = modify_type(type)
+        full_type.append(modify_type(type))
         brand = record[1]         
-        full_brand = modify_brand(brand)
-        cpu = record[2]
-        ram = int(record[3])
-        disk_1 = record[4]
-        num_hd = int(record[5])
+        full_brand.append(modify_brand(brand))
+        cpu.append(record[2])
+        ram.append(int(record[3]))
+        disk_1.append(record[4])
+        num_hd.append(int(record[5]))
         #Looks at the number of hard drives and pulls the information from the correct column
         if num_hd == 1:
-            op_sys = record[6]
-            year = record[7]
+            op_sys.append(record[6])
+            year.append(record[7])
             print(f"{full_type:10}  {full_brand:8}  {cpu:2}  {ram:4}  {disk_1:2}  {num_hd:9}              {op_sys:2}  {year} ")
         if num_hd == 2:
-            disk_2 = record[6]
-            op_sys = record[7]
-            year = record[8]
+            disk_2.append(record[6])
+            op_sys.append(record[7])
+            year.append(record[8])
             print(f"{full_type:10}  {full_brand:8}  {cpu:2}  {ram:4}  {disk_1:2}  {num_hd:9}  {disk_2:10}  {op_sys:2}  {year} ")
                
 #-----Final Output--------        
