@@ -1,7 +1,7 @@
 #Name Ken Pierson
-#W9 # Lab 6
-#Date December 8, 2024
-#SE116.02
+#W3D2 # Lab 3
+#Date January 26, 2025
+#SE126.04
 
 #Construct a program that will analyze potential voters. The program should generate the following totals:
 #1. Number of individuals not eligible to register.
@@ -9,7 +9,6 @@
 #3. Number of individuals who are eligible to vote but did not vote.
 #4. Number of individuals who did vote.
 #5. Number of records processed.
-#The program must prompt the user for the ID number, age, if the person is registered to vote, and if the person voted. You will also have to prompt to see if the user has more data to enter.
 
 #VARIABLE DICTIONARY
 #total_not_eligible_to_reg
@@ -22,7 +21,7 @@
 #registered
 #voted
 
-#this file uses: .voters_202040.csv
+#this file uses: voters_202040.csv
 
 #--IMPORTS--------------------------------------------------------------------
 import csv
@@ -47,11 +46,14 @@ with open("text_files/voters_202040.csv") as csvfile:
   file = csv.reader(csvfile)
 
   for rec in file:
-
+    #parallel lists --> data dispersed across lists, connected by the same index
     id_num.append(int(rec[0]))
     age.append(int(rec[1]))
     registered.append(rec[2])
     voted.append(rec[3])
+
+
+#disconnected from file
 
 print(f"\n{"ID Number":10}  {"Age":5}  {"Registered":3}  {"Voted"}")
 print("-" * 40)
@@ -60,7 +62,7 @@ for i in range(0,  len(id_num)):
     print(f"{id_num[i]:<10}  {age[i]:<5}  {registered[i]:10}  {voted[i]}")
 print("-" * 40)
 
-#processing lists -- USE A FOR LOOP
+#processing lists -- USING A FOR LOOP
 for i in range(0, len(id_num)):
   #calculate the number of individuals not eligible to register.
   if age[i] < 18:
