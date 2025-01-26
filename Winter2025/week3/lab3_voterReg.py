@@ -12,120 +12,75 @@
 #The program must prompt the user for the ID number, age, if the person is registered to vote, and if the person voted. You will also have to prompt to see if the user has more data to enter.
 
 #VARIABLE DICTIONARY
-#total_not_eligible_to_register
-#total_old_enough_not_registered
+#total_not_eligible_to_reg
+#total_old_enough_not_reg
 #total_eligible_did_not_vote
 #total_voters
 #total_records_processed
-#answer = input
-#id_number
-#voter_age
+#id_num
+#age
 #registered
 #voted
 
-#---IMPORTS---------------------------------------------------
-from os import system, name
-#---FUNCTIONS-------------------------------------------------
-def clear():
-    if name == "nt": #for windows
-        _ = system("cls")
-    else: #for mac or linux
-        _ = system("clear")
+#this file uses: .voters_202040.csv
 
-def loopcontrol(): #() is empty so NO parameters; this function does not require any info to run
-    ans = input("Would you like to enter more data? [y/n]: ").lower()
-    while ans != "y" and ans != "n":
-      print("***INVALID ENTRY***")
-      ans = input("Would you like to enter more data? [y/n]: ").lower()
-    return ans
+#--IMPORTS--------------------------------------------------------------------
+import csv
+#--MAIN EXECUTING CODE--------------------------------------------------------
 
-def get_age_integer():  
-  age = input("Enter the Voter's age: ")
-  #.isnumeric() used to check if all the characters are numeric: It returns True if all characters in the string are numeric. It returns False if even one character in the string is not numeric.
-  if age.isnumeric() and int(age) > 0:
-    return int(age) 
-  else:
-    print("***INVALID ENTRY***") 
-    return get_age_integer()
-
-def get_id_integer(): 
-  id = input("Enter the Voter ID Number: ")
-  if id.isnumeric() and int(id) >= 0: 
-    return int(id) 
-  else:
-    print("***INVALID ENTRY***") 
-    return get_id_integer()
-
-
-def registration():
-  reg = input("Is the individual Registered to Vote [y/n]: ").lower()
-  while reg != "y" and reg != "n":
-    print("***INVALID ENTRY***")
-    reg = input("Is the individual Registered to Vote [y/n]: ").lower()
-  return reg
-
-def actually_voted():
-  vote = input("Did the individual Vote [y/n]: ").lower()
-  while vote != "y" and vote != "n":
-    print("***INVALID ENTRY***")
-    vote = input("Did the individual Vote [y/n]: ").lower()
-  return vote   
-
-#---------------------------------------------------------------------
-
-#start code below :]
-
-clear()
-print("Welcome to Voter Analysis Tool!\n")
-
-total_not_eligible_to_register = 0
-total_old_enough_not_registered = 0
+#initialize a record counting variable
+total_not_eligible_to_reg = 0
+total_old_enough_not_reg = 0
 total_eligible_did_not_vote = 0
 total_voters = 0
-total_records_processed = 0
+total_records_processed =  0
 
-answer = input("Would you like to start the Voter Analysis Tool? [y/n]: ").lower()
+#create an empty list for every potential field in the file
+id_num = []
+age = []
+registered = []
+voted = []
 
-#invalid entry trap - user will only enter this if they do not follow the directions from prior prompt
-while answer != "y" and answer != "n":
-  print("***INVALID ENTRY***")
-  answer = input("Would you like to start the Voter Analysis Tool? [y/n]: ").lower()
+#connecting to the file
+with open("text_files/voters_202040.csv") as csvfile:
 
-#"When checking to see if the user wants to enter more data they should be able to enter a y or a Y.(lowercase()"
-#main program loop - repeats for each voter
-while answer == "y":
+  file = csv.reader(csvfile)
 
-  id_number = get_id_integer()
-  voter_age = get_age_integer()
-  registered = registration()
-  voted = actually_voted()
+  for rec in file:
 
-  #update running counts and totals for end of program
- 
-  if voter_age < 18:
-    total_not_eligible_to_register += 1
-  if voter_age >= 18 and registered == "n":
-    total_old_enough_not_registered += 1
-  if voter_age >= 18 and registered == "y" and voted == "n":
+    id_num.append(int(rec[0]))
+    age.append(int(rec[1]))
+    registered.append(rec[2])
+    voted.append(rec[3])
+
+print(f"\n{"ID Number":10}  {"Age":5}  {"Registered":3}  {"Voted"}")
+print("-" * 40)
+for i in range(0,  len(id_num)):
+    ##for every item, index will start at 0 and run up to (not including) the length (# of items)
+    print(f"{id_num[i]:<10}  {age[i]:<5}  {registered[i]:10}  {voted[i]}")
+print("-" * 40)
+
+#processing lists -- USE A FOR LOOP
+for i in range(0, len(id_num)):
+  #calculate the number of individuals not eligible to register.
+  if age[i] < 18:
+    total_not_eligible_to_reg += 1
+  #calculate number of individuals who are old enough to vote but have not registered.
+  if age[i] >= 18 and registered[i] == "N":
+    total_old_enough_not_reg += 1
+  #calculate number of individuals who are eligible to vote but did not vote.
+  if age[i] >= 18 and registered[i] == "Y" and voted[i] =="N":
     total_eligible_did_not_vote += 1
-  if voted == "y":
+  #calculate number of individuals who did vote.
+  if voted[i] == "Y":
     total_voters += 1
-
-  total_records_processed = total_records_processed + 1
-
-  print(f"\nID Number: {id_number} | Age: {voter_age} | Registered: {registered} | Voted: {voted}\n")
-
-  answer = loopcontrol()
-
-  clear()
+  #calculate number of records processed.
+  total_records_processed += 1 
 
 #end of program - final output displays
-#Once the user is ﬁnished entering voters the program should display the final totals
-print("\n~~~Below are the totals for the potential voters~~~\n ")
-print(f"Not Eligible to Register:  {total_not_eligible_to_register}")
-print(f"Of age but not Registered: {total_old_enough_not_registered}")
-print(f"Eligible but didn't Vote:  {total_eligible_did_not_vote}")
-print(f"Total number of Voters:    {total_voters}")
+print(f"\nNot Eligible to Register:   {total_not_eligible_to_reg}")
+print(f"Of age but not Registered:  {total_old_enough_not_reg}")
+print(f"Eligible but didn't Vote:   {total_eligible_did_not_vote}")
+print(f"Total number of Voters:     {total_voters}")
 print(f"Total Records Processed:   {total_records_processed}")
-
-print("\nThank you for using the Voter Analysis Tool. Goodbye :]\n")
+print("\nThank you for using the program. Goodbye.\n")
