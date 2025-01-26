@@ -56,11 +56,11 @@ with open("text_files/voters_202040.csv") as csvfile:
 #disconnected from file
 
 print(f"\n{"ID Number":10}  {"Age":5}  {"Registered":3}  {"Voted"}")
-print("-" * 40)
+print("-" * 38)
 for i in range(0,  len(id_num)):
     ##for every item, index will start at 0 and run up to (not including) the length (# of items)
-    print(f"{id_num[i]:<10}  {age[i]:<5}  {registered[i]:10}  {voted[i]}")
-print("-" * 40)
+    print(f"{id_num[i]:<10}  {age[i]:<10}  {registered[i]:7}  {voted[i]}")
+print("-" * 38)
 
 #processing lists -- USING A FOR LOOP
 for i in range(0, len(id_num)):
