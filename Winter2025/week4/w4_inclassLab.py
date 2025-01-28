@@ -91,13 +91,14 @@ print("Welcome to the Student Search Program")
 answer = "y"
 while answer == "y":
     #show user search menu
-    print("~Search Menu~")
+    print("\t~Search Menu~")
     print("1. Search by LAST Name")
     print("2. Search by FIRST Name")
     print("3. Search by LETTER Grade")
     print("4. Exit")
     #gain search type
     search_type = input("Enter you search type [1-4]: ")
+    print()
     #filter search options based on type
     if search_type == "1": #LAST NAME
         #sequential search - search for a student by their LAST name
@@ -105,7 +106,7 @@ while answer == "y":
         
         print("\t~LAST NAME SEARCH~")
         #step 1: set-up and gain search query
-        found = -1  #flag var, will be replaced with index position if name is found; we are using a -1 because it is not a valid index location
+        foundL = -1  #flag var, will be replaced with index position if name is found; we are using a -1 because it is not a valid index location
         search_last = input("Enter the last name you wish to find: ") #name we are looking for
 
         #step 2: perform search algo (seq. search -> for loop w/ if statement)
@@ -114,17 +115,18 @@ while answer == "y":
 
             if search_last.lower() == lastName[i].lower(): 
                 #if performs the SEARCH - is what we're looking for here in the list?
-                found = i  #stores found item's INDEX LOCATION
+                foundL = i  #stores found item's INDEX LOCATION
 
         #step 3: display results to user; make sure you give info: both for found or NOT found
-        if found != -1:
+        if foundL != -1:
             #last name FOUND!
-            print(f"Your search for {search_last.title()} was FOUND! Here is their data: ")
-            print(f"{firstName[found]:10}  {lastName[found]:10}  {test1[found]:3}  {test2[found]:3}  {test3[found]:3}  {num_avg[found]:6.1f}  {let_avg[found]}")
+            print(f"Your search for {search_last.title()} was FOUND! Here is their data:\n ")
+            print(f"{"FIRST":10}  {"LAST":10}   {"T1":3}  {"T2":3}  {"T3":3}  {"# AVG":6}  {"L AVG"}")
+            print(f"{firstName[foundL]:10}  {lastName[foundL]:10}  {test1[foundL]:3}  {test2[foundL]:3}  {test3[foundL]:3}  {num_avg[foundL]:6.1f}   {let_avg[foundL]}\n")
         else: 
             #NOT found
             print(f"Your search for {search_last.title()} was NOT FOUND!")
-            print("Check your cAsInG and sPeLlInG and try again!")
+            print("Check your spelling and try again!")
 
     elif search_type == "2": #FIRST NAME
         #sequential search - search for a student by their LAST name
@@ -132,7 +134,7 @@ while answer == "y":
         
         print("\t~FIRST NAME SEARCH~")
         #step 1: set-up and gain search query
-        found = -1  #flag var, will be replaced with index position if name is found; we are using a -1 because it is not a valid index location
+        foundF = -1  #flag var, will be replaced with index position if name is found; we are using a -1 because it is not a valid index location
         search_first = input("Enter the first name you wish to find: ") #name we are looking for
 
         #step 2: perform search algo (seq. search -> for loop w/ if statement)
@@ -141,17 +143,18 @@ while answer == "y":
 
             if search_first.lower() == firstName[i].lower(): 
                 #if performs the SEARCH - is what we're looking for here in the list?
-                found = i  #stores found item's INDEX LOCATION
+                foundF = i  #stores found item's INDEX LOCATION
 
         #step 3: display results to user; make sure you give info: both for found or NOT found
-        if found != -1:
+        if foundF != -1:
             #last name FOUND!
             print(f"Your search for {search_first.title()} was FOUND! Here is their data: ")
-            print(f"{firstName[found]:10}  {lastName[found]:10}  {test1[found]:3}  {test2[found]:3}  {test3[found]:3}  {num_avg[found]:6.1f}  {let_avg[found]}")
+            print(f"\n{"FIRST":10}  {"LAST":10}   {"T1":3}  {"T2":3}  {"T3":3}  {"# AVG":6}  {"L AVG"}")
+            print(f"{firstName[foundF]:10}  {lastName[foundF]:10}  {test1[foundF]:3}  {test2[foundF]:3}  {test3[foundF]:3}  {num_avg[foundF]:6.1f}   {let_avg[foundF]}")
         else: 
             #NOT found
             print(f"Your search for {search_first.title()} was NOT FOUND!")
-            print("Check your cAsInG and sPeLlInG and try again!")
+            print("Check your spelling and try again!")
     
     elif search_type == "3": #LETTER GRADE
         print("\tLETTER GRADE SEARCH")
@@ -170,20 +173,20 @@ while answer == "y":
             if search_let.upper() == let_avg[i]: 
                 #if performs the SEARCH - is what we're looking for here in the list?
                 found.append(i)  #stores found item's INDEX LOCATION to the found list because we may have multiple students whose letter grade fits the searched for grade
-                print(f"Found a {search_let} grade in INDEX {i}")
+                #print(f"Found a {search_let} grade in INDEX {i}")
 
         #step 3: display results to user; make sure you give info: both for found or NOT found
         if not found: #'if not found' means 'found' is an EMPTY LIST
             #NOT found
-            print(f"Your search for {search_let} was NOT FOUND!")
-            print("Check your cAsInG and sPeLlInG and try again!")
+            print(f"Your search for {search_let.upper()} was NOT FOUND!")
+            print("Please try again!")
         else: 
             #last name FOUND!
-            print(f"Your search for {search_let} was FOUND! Here is their data: ")
-
+            print(f"Your search for {search_let.upper()} was FOUND! Here is their data: ")
+            print(f"\n{"INDEX":8} {"FIRST":10}  {"LAST":10}   {"T1":3}  {"T2":3}  {"T3":3}  {"# AVG":6}  {"L AVG"}")
             #'found' is a list populated with index locations - we loop through this list, and use found[i] (which again, holds an INDEX from our other searched-through list) to be recalled and used below
             for i in range(0, len(found)):
-                print(f"{found[i]}:  {firstName[found[i]]:10}  {lastName[found[i]]:10}  {test1[found[i]]:3}  {test2[found[i]]:3}  {test3[found[i]]:3}  {num_avg[found[i]]:6.1f}  {let_avg[found[i]]}")
+                print(f"{found[i]:3}:     {firstName[found[i]]:10}  {lastName[found[i]]:10}  {test1[found[i]]:3}  {test2[found[i]]:3}  {test3[found[i]]:3} {num_avg[found[i]]:6.1f}    {let_avg[found[i]]}")
     elif search_type == "4": #exit
         print("\t~EXIT~")
         answer = "x"
