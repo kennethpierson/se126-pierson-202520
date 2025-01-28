@@ -49,7 +49,7 @@ for i in range(0, len(house_alleg)):
         house_alleg[i] = dept[3]
     if house_alleg[i] == "House Baratheon":
         house_alleg[i] = dept[4]
-    if house_alleg[i] == "The Night’s Watch":
+    if house_alleg[i] == "The Night's Watch":
         house_alleg[i] = dept[5]
     
 #print field headers for disply below
