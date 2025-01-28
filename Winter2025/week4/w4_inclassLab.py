@@ -38,6 +38,8 @@ def loopcontrol(): #() is empty so NO parameters; this function does not require
 
 #--MAIN EXECUTING CODE---------------------------------
 
+class_avg = 0
+
 #create an empty list for every potential field in the file
 firstName =[]
 lastName = []
@@ -76,6 +78,9 @@ for i in range(0, len(firstName)):
     num_avg.append(a)
     let_avg.append(letter(a))
 
+for i in range(0, len(num_avg)):
+    class_avg += (num_avg[i])
+
 #print field headers for disply below
 print(f"\n{"FIRST":10}  {"LAST":10}   {"T1":3}  {"T2":3}  {"T3":3}  {"# AVG":6}  {"L AVG"}")
 print("-" * 55)
@@ -84,6 +89,7 @@ for i in range(0, len(firstName)):
     print(f"{firstName[i]:10}  {lastName[i]:10}  {test1[i]:3}  {test2[i]:3}  {test3[i]:3}  {num_avg[i]:6.1f}    {let_avg[i]}")
 print("-" * 55)
 print(f"Total Students in file: {len(firstName)}\n")
+print(f"Class Avg: {class_avg}")
 print("-" * 55)
 
 print("Welcome to the Student Search Program")
@@ -91,7 +97,7 @@ print("Welcome to the Student Search Program")
 answer = "y"
 while answer == "y":
     #show user search menu
-    print("\t~Search Menu~")
+    print("-------Search Menu-------")
     print("1. Search by LAST Name")
     print("2. Search by FIRST Name")
     print("3. Search by LETTER Grade")
@@ -104,7 +110,7 @@ while answer == "y":
         #sequential search - search for a student by their LAST name
         #this version of sequential search is looking for ONE item, a specific and unique LAST name
         
-        print("\t~LAST NAME SEARCH~")
+        print("\t-------LAST NAME SEARCH-------")
         #step 1: set-up and gain search query
         found = -1  #flag var, will be replaced with index position if name is found; we are using a -1 because it is not a valid index location
         search_last = input("Enter the last name you wish to find: ") #name we are looking for
@@ -132,7 +138,7 @@ while answer == "y":
         #sequential search - search for a student by their LAST name
         #this version of sequential search is looking for ONE item, a specific and unique LAST name
         
-        print("\t~FIRST NAME SEARCH~")
+        print("-------FIRST NAME SEARCH-------")
         #step 1: set-up and gain search query
         found = -1  #flag var, will be replaced with index position if name is found; we are using a -1 because it is not a valid index location
         search_first = input("Enter the first name you wish to find: ") #name we are looking for
@@ -157,7 +163,7 @@ while answer == "y":
             print("Check your spelling and try again!")
     
     elif search_type == "3": #LETTER GRADE
-        print("\tLETTER GRADE SEARCH")
+        print("-------LETTER GRADE SEARCH-------")
 
         #sequential search - search for a collection of students based on their Letter Grade Average
         #this version of sequential search is looking for MULTIPLE items, based on a specific letter grade
@@ -188,7 +194,7 @@ while answer == "y":
             for i in range(0, len(found)):
                 print(f"{found[i]:3}:     {firstName[found[i]]:10}  {lastName[found[i]]:10}  {test1[found[i]]:3}  {test2[found[i]]:3}  {test3[found[i]]:3} {num_avg[found[i]]:6.1f}    {let_avg[found[i]]}")
     elif search_type == "4": #exit
-        print("\t~EXIT~")
+        print("\t---EXIT---")
         answer = "x"
     else:
         print("\t!INVALID ENTRY!")
