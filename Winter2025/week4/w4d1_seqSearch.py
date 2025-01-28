@@ -93,27 +93,32 @@ else:
     print(f"Your search for {search_last.title()} was NOT FOUND!")
     print("Check your cAsInG and sPeLlInG and try again!\n")
 
-print("-" * 38)
-print("Welcome to the Student Search Program")
-answer = input("Would you like to start your search? [y/n]: ").lower()
-while answer == "y":
-    #show user search menu
-    print("~Search Menu~")
-    print("1. Search by LAST Name")
-    print("2. Search by FIRST Name")
-    print("3. Search by LETTER Grade")
-    print("4. Exit")
-    #gain search type
-    search_type = input("Enter you search type [1-4]: ")
+'''
+A simple overview of sequential search:
 
-    #filter search options based on type
-    if search_type == "1":  #LAST Name
-        print()
-    elif search_type == "2":  #FIRST Name
-        print()
-    elif search_type == "3": #LETTER Grade
-        print()
-    #build a way out of the loop - answer should be able to change value!
-    if search_type == "1" or search_type == "2" or search_type == "3":
-        answer = input("Would you like to search again? [y/n]: ").lower()
-print("Thanks for searching good bye!")
+#step 1: set up and gain search
+found = -1 #we are using -1 because it is not a valid index location (technically); you could also use found = "x"
+
+search = input("What are you searching for? ")
+
+#step 2: perform the searching algorithm
+for i in range(0, len(listYouAreSearchingThrough)):
+
+    if search == listYouAreSearchingThrough[i]: 
+        found = i #found drops its original value (-1 or "x") and is replaced with the current index location
+        #since this occurs in the if statement, it will only happen IF what we are looking for matches one of the values on the list we are searching through
+
+#step 3: check and display your results
+if found != -1: #(or "x" if that was your initial value
+    #found has changed, meaning at some point it checked into the if statement within our searching for loop
+    
+    print(f"Your search for {search} has been FOUND!")
+    #display relevant data/results here using 'found' as your index representer 
+    print(f"{listYouAreSearchingThrough[found]}")
+    
+else:
+    #found is still its initial value, meaning we did not find the data the user was looking for
+    #tell the user their search came up empty
+    print(f"Your search for {search} has NOT BEEN FOUND!")
+
+'''
