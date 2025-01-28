@@ -80,6 +80,8 @@ for i in range(0, len(firstName)):
 
 for i in range(0, len(num_avg)):
     class_avg += (num_avg[i])
+    field_len = len(num_avg)
+total_avg = class_avg / field_len
 
 #print field headers for disply below
 print(f"\n{"FIRST":10}  {"LAST":10}   {"T1":3}  {"T2":3}  {"T3":3}  {"# AVG":6}  {"L AVG"}")
@@ -89,7 +91,7 @@ for i in range(0, len(firstName)):
     print(f"{firstName[i]:10}  {lastName[i]:10}  {test1[i]:3}  {test2[i]:3}  {test3[i]:3}  {num_avg[i]:6.1f}    {let_avg[i]}")
 print("-" * 55)
 print(f"Total Students in file: {len(firstName)}\n")
-print(f"Class Avg: {class_avg}")
+print(f"Class Avg: {total_avg:.1f}\n")
 print("-" * 55)
 
 print("Welcome to the Student Search Program")
