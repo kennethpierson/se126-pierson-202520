@@ -106,7 +106,7 @@ while answer == "y":
         
         print("\t~LAST NAME SEARCH~")
         #step 1: set-up and gain search query
-        foundL = -1  #flag var, will be replaced with index position if name is found; we are using a -1 because it is not a valid index location
+        found = -1  #flag var, will be replaced with index position if name is found; we are using a -1 because it is not a valid index location
         search_last = input("Enter the last name you wish to find: ") #name we are looking for
 
         #step 2: perform search algo (seq. search -> for loop w/ if statement)
@@ -115,14 +115,14 @@ while answer == "y":
 
             if search_last.lower() == lastName[i].lower(): 
                 #if performs the SEARCH - is what we're looking for here in the list?
-                foundL = i  #stores found item's INDEX LOCATION
+                found = i  #stores found item's INDEX LOCATION
 
         #step 3: display results to user; make sure you give info: both for found or NOT found
-        if foundL != -1:
+        if found != -1:
             #last name FOUND!
             print(f"Your search for {search_last.title()} was FOUND! Here is their data:\n ")
             print(f"{"FIRST":10}  {"LAST":10}   {"T1":3}  {"T2":3}  {"T3":3}  {"# AVG":6}  {"L AVG"}")
-            print(f"{firstName[foundL]:10}  {lastName[foundL]:10}  {test1[foundL]:3}  {test2[foundL]:3}  {test3[foundL]:3}  {num_avg[foundL]:6.1f}   {let_avg[foundL]}\n")
+            print(f"{firstName[found]:10}  {lastName[found]:10}  {test1[found]:3}  {test2[found]:3}  {test3[found]:3}  {num_avg[found]:6.1f}   {let_avg[found]}\n")
         else: 
             #NOT found
             print(f"Your search for {search_last.title()} was NOT FOUND!")
@@ -134,7 +134,7 @@ while answer == "y":
         
         print("\t~FIRST NAME SEARCH~")
         #step 1: set-up and gain search query
-        foundF = -1  #flag var, will be replaced with index position if name is found; we are using a -1 because it is not a valid index location
+        found = -1  #flag var, will be replaced with index position if name is found; we are using a -1 because it is not a valid index location
         search_first = input("Enter the first name you wish to find: ") #name we are looking for
 
         #step 2: perform search algo (seq. search -> for loop w/ if statement)
@@ -143,14 +143,14 @@ while answer == "y":
 
             if search_first.lower() == firstName[i].lower(): 
                 #if performs the SEARCH - is what we're looking for here in the list?
-                foundF = i  #stores found item's INDEX LOCATION
+                found = i  #stores found item's INDEX LOCATION
 
         #step 3: display results to user; make sure you give info: both for found or NOT found
-        if foundF != -1:
+        if found != -1:
             #last name FOUND!
             print(f"Your search for {search_first.title()} was FOUND! Here is their data: ")
             print(f"\n{"FIRST":10}  {"LAST":10}   {"T1":3}  {"T2":3}  {"T3":3}  {"# AVG":6}  {"L AVG"}")
-            print(f"{firstName[foundF]:10}  {lastName[foundF]:10}  {test1[foundF]:3}  {test2[foundF]:3}  {test3[foundF]:3}  {num_avg[foundF]:6.1f}   {let_avg[foundF]}")
+            print(f"{firstName[found]:10}  {lastName[found]:10}  {test1[found]:3}  {test2[found]:3}  {test3[found]:3}  {num_avg[found]:6.1f}   {let_avg[found]}")
         else: 
             #NOT found
             print(f"Your search for {search_first.title()} was NOT FOUND!")
