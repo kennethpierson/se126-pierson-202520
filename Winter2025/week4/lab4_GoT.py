@@ -61,4 +61,4 @@ for i in range(0, len(first_name)):
 print("-" * 90)
 print(f"Total Number in file: {len(first_name)}\n")
 print("-" * 90)
-print(phone_ext)
+print(phone_ext[0])
