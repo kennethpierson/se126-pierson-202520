@@ -7,8 +7,6 @@
 #Part 2 - Next, reprocess the lists to find each student's current average score, letter grade equivalent, and the class average.  While processing in the for loop, store each student's average into a new list called 'num_avg' and their letter grade into a list called 'let_avg'. Then, print each student's full information, record by record including average score and average letter equivalent.  After this print of the original file data from the lists, print to the console the total number of student's in the class along with the class numeric average.  
 #Part 3 - After your final display using the 1D parallel lists, create a sequential search program which allows the user to repeatedly utilize the following menu of search types. When a searched for item is found, display all student data to the console. When a search is compete and no matching data is found, alert the user. Search options 1 and 2 should only show one found student, where search option 3 should show a potential of multiple students.
 
-#VARIABLE DICTIONARY:
-
 #--IMPORTS---------------------------------------------
 import csv
 #--FUNCITONS-------------------------------------------
@@ -38,6 +36,7 @@ def loopcontrol(): #() is empty so NO parameters; this function does not require
 
 #--MAIN EXECUTING CODE---------------------------------
 
+#initialize a counting variable
 class_avg = 0
 
 #create an empty list for every potential field in the file
