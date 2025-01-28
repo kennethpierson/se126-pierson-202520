@@ -70,7 +70,7 @@ else:
     print(f"Your search for {search} was found:")
     for i in range(0, len(found)):
         print (f"{dragons[found[i]]:15} {riders[found[i]]:30} {count[found[i]]:3} {color1[found[i]]:8} {color2[found[i]]:8}")
-'''
+
 #write some data to a new file
 #create and write all of the data to a new text file
 file = open("text_files/test.csv", "w")
@@ -82,4 +82,3 @@ file = open("text_files/D_R.csv", "w")
 for i in range(0, len (dragons)):
     file.write(f"{dragons[i]},{riders[i]}\n")
 file.close()
-'''
