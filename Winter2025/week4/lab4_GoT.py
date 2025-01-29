@@ -22,7 +22,9 @@ screen_name = []
 house_alleg = []
 email = []
 dept = ["Research & Development", "Marketing", "Human Resources", "Accounting", "Sales", "Auditing"]
-phone_ext = list(range(100,199))
+dept_ext = [100,200,300,400,500,600]
+dept_counter = [0, 0, 0, 0, 0, 0]
+phone_ext = []
 
 #connecting to the file
 with open("text_files/got_emails.csv") as csvfile:
@@ -33,7 +35,7 @@ with open("text_files/got_emails.csv") as csvfile:
         age.append(rec[2])
         screen_name.append(rec[3])
         house_alleg.append(rec[4])
-              
+
 #disconnect from file-----------------------------------
 for i in range(0, len(screen_name)):
     conv_email = screen_name[i] + "@westeros.net"
@@ -41,24 +43,35 @@ for i in range(0, len(screen_name)):
 for i in range(0, len(house_alleg)):
     if house_alleg[i] == "House Stark":
         house_alleg[i] = dept[0]
+        phone_ext.append(dept_ext[0] + dept_counter[0])
+        dept_counter[0] += 1
     if house_alleg[i] == "House Targaryen":
         house_alleg[i] = dept[1]
+        phone_ext.append(dept_ext[1] + dept_counter[1])
+        dept_counter[1] += 1
     if house_alleg[i] == "House Tully":
         house_alleg[i] = dept[2]
+        phone_ext.append(dept_ext[2] + dept_counter[2])
+        dept_counter[2] += 1
     if house_alleg[i] == "House Lannister":
         house_alleg[i] = dept[3]
+        phone_ext.append(dept_ext[3] + dept_counter[3])
+        dept_counter[3] += 1
     if house_alleg[i] == "House Baratheon":
         house_alleg[i] = dept[4]
+        phone_ext.append(dept_ext[4] + dept_counter[4])
+        dept_counter[4] += 1
     if house_alleg[i] == "The Night's Watch":
         house_alleg[i] = dept[5]
-    
+        phone_ext.append(dept_ext[5] + dept_counter[5])
+        dept_counter[5] += 1
+
 #print field headers for disply below
 print(f"\n{"FIRST":8}    {"LAST":10}     {"EMAIL":30}  {"DEPARTMENT":23}  {"EXT":3}")
 print("-" * 90)
 #processing through list for display
 for i in range(0, len(first_name)):
-    print(f"{first_name[i]:10}  {last_name[i]:10}     {email[i]:30}  {house_alleg[i]}")
+    print(f"{first_name[i]:10}  {last_name[i]:10}     {email[i]:30}  {house_alleg[i]:23}  x{phone_ext[i]}")
 print("-" * 90)
 print(f"Total Number in file: {len(first_name)}\n")
 print("-" * 90)
-print(phone_ext[0])
