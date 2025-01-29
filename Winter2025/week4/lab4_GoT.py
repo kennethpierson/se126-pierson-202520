@@ -73,5 +73,11 @@ print("-" * 90)
 for i in range(0, len(first_name)):
     print(f"{first_name[i]:10}  {last_name[i]:10}     {email[i]:30}  {house_alleg[i]:23}  x{phone_ext[i]}")
 print("-" * 90)
+
+#create and write dragons and riders
+file = open("text_files/westeros.csv", "w")
+for i in range(0, len (first_name)):
+    file.write(f"{first_name[i]},{last_name[i]:},{email[i]},{house_alleg[i]},{phone_ext[i]}\n")
+file.close()
+print(f"File Created")
 print(f"Total Number in file: {len(first_name)}\n")
-print("-" * 90)
