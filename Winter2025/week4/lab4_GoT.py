@@ -13,6 +13,12 @@ import csv
 #--MAIN EXECUTING CODE---------------------------------
 
 #initialize a variable
+res_dev = 0
+mktg = 0
+hr = 0
+acctg = 0
+sales = 0
+audit = 0
 
 #create an empty list for every potential field in the file
 first_name = []
@@ -45,26 +51,32 @@ for i in range(0, len(house_alleg)):
         house_alleg[i] = dept[0]
         phone_ext.append(dept_ext[0] + dept_counter[0])
         dept_counter[0] += 1
+        res_dev += 1
     if house_alleg[i] == "House Targaryen":
         house_alleg[i] = dept[1]
         phone_ext.append(dept_ext[1] + dept_counter[1])
         dept_counter[1] += 1
+        mktg += 1
     if house_alleg[i] == "House Tully":
         house_alleg[i] = dept[2]
         phone_ext.append(dept_ext[2] + dept_counter[2])
         dept_counter[2] += 1
+        hr += 1
     if house_alleg[i] == "House Lannister":
         house_alleg[i] = dept[3]
         phone_ext.append(dept_ext[3] + dept_counter[3])
         dept_counter[3] += 1
+        acctg += 1
     if house_alleg[i] == "House Baratheon":
         house_alleg[i] = dept[4]
         phone_ext.append(dept_ext[4] + dept_counter[4])
         dept_counter[4] += 1
+        sales += 1
     if house_alleg[i] == "The Night's Watch":
         house_alleg[i] = dept[5]
         phone_ext.append(dept_ext[5] + dept_counter[5])
         dept_counter[5] += 1
+        audit += 1
 
 #print field headers for disply below
 print(f"\n{"FIRST":8}    {"LAST":10}     {"EMAIL":30}  {"DEPARTMENT":23}  {"EXT":3}")
@@ -76,8 +88,14 @@ print("-" * 90)
 
 #create and write dragons and riders
 file = open("text_files/westeros.csv", "w")
-for i in range(0, len (first_name)):
+for i in range(0, len(first_name)):
     file.write(f"{first_name[i]},{last_name[i]:},{email[i]},{house_alleg[i]},{phone_ext[i]}\n")
 file.close()
-print(f"File Created")
-print(f"Total Number in file: {len(first_name)}\n")
+print(f"\nThe file has been created and saved to the following: text_files/westeros.csv")
+print(f"\nEmployees in Research & Development: {res_dev}")
+print(f"Employees Marketing: {mktg}")
+print(f"Employees Human Resources: {hr}")
+print(f"Employees Account: {acctg}")
+print(f"Employees Sales: {sales}")
+print(f"Employees Audit: {audit}")
+print(f"Total Number of Employees: {len(first_name)}\n")
