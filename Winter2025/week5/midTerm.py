@@ -46,76 +46,36 @@ last_name = []
 email = []
 dept = []
 phone_ext = []
+office =[]
+office_num = [100]
+office_count = [0]
 
 #connecting to the file----------------------------------
-with open("text_files/got_emails.csv") as csvfile:
+with open("text_files/westeros.csv") as csvfile:
     file = csv.reader(csvfile)
+
     for rec in file:
         first_name.append(rec[0])
         last_name.append(rec[1])
-        age.append(rec[2])
-        screen_name.append(rec[3])
-        house_alleg.append(rec[4])
+        email.append(rec[2])
+        dept.append(rec[3])
+        phone_ext.append(rec[4])
+        office.append(office_num[0] + office_count[0])
+        office_count[0] += 1 
 
 #disconnect from file-----------------------------------
 
-for i in range(0, len(screen_name)):                            #for loop to create the email addresses
-    conv_email = screen_name[i] + "@westeros.net"
-    email.append(conv_email)
-for i in range(0, len(house_alleg)):                            #for loop for the departments and phone extentions
-    if house_alleg[i] == "House Stark":                         
-        house_alleg[i] = dept[0]                                #takes the house allegiance and matches it to the department
-        phone_ext.append(dept_ext[0] + dept_counter[0])         #creates a unique phone ext within the dept range
-        dept_counter[0] += 1                                    #increments by one each time so different extensions are handed out
-        res_dev += 1                                            #used to count the number of employees in this particular department
-    if house_alleg[i] == "House Targaryen":
-        house_alleg[i] = dept[1]
-        phone_ext.append(dept_ext[1] + dept_counter[1])
-        dept_counter[1] += 1
-        mktg += 1
-    if house_alleg[i] == "House Tully":
-        house_alleg[i] = dept[2]
-        phone_ext.append(dept_ext[2] + dept_counter[2])
-        dept_counter[2] += 1
-        hr += 1
-    if house_alleg[i] == "House Lannister":
-        house_alleg[i] = dept[3]
-        phone_ext.append(dept_ext[3] + dept_counter[3])
-        dept_counter[3] += 1
-        acctg += 1
-    if house_alleg[i] == "House Baratheon":
-        house_alleg[i] = dept[4]
-        phone_ext.append(dept_ext[4] + dept_counter[4])
-        dept_counter[4] += 1
-        sales += 1
-    if house_alleg[i] == "The Night's Watch":
-        house_alleg[i] = dept[5]
-        phone_ext.append(dept_ext[5] + dept_counter[5])
-        dept_counter[5] += 1
-        audit += 1
-
 #print field headers for disply below
-print(f"\n{"FIRST":8}    {"LAST":10}     {"EMAIL":30}  {"DEPARTMENT":23}  {"EXT":3}")
-print("-" * 90)
+print(f"\n{"FIRST":8}    {"LAST":10}     {"EMAIL":30}  {"DEPARTMENT":23}  {"EXT":4}    {"Office"} ")
+print("-" * 100)
 #processing through list for display
 for i in range(0, len(first_name)):
-    print(f"{first_name[i]:10}  {last_name[i]:10}     {email[i]:30}  {house_alleg[i]:23}  x{phone_ext[i]}")
-print("-" * 90)
+    print(f"{first_name[i]:10}  {last_name[i]:10}     {email[i]:30}  {dept[i]:23}  x{phone_ext[i]:4}   {office[i]}")
+print("-" * 100)
+print(f"\nTotal Number of Employees: {len(first_name)}\n")
 
 #create and write westeros.csv
-file = open("text_files/westeros.csv", "w")
+file = open("text_files/midterm_choice1.csv", "w")
 for i in range(0, len(first_name)):
-    file.write(f"{first_name[i]},{last_name[i]:},{email[i]},{house_alleg[i]},{phone_ext[i]}\n")
+    file.write(f"{first_name[i]},{last_name[i]},{email[i]},{dept[i]},{phone_ext[i]},{office[i]}\n") 
 file.close()
-#final output display
-print(f"\nThe file has been created and saved to the following: text_files/westeros.csv \n")
-print("--------- Department Totals ----------")
-print(f"Employees in Research & Development: {res_dev}")
-print(f"Employees in Marketing:              {mktg}")
-print(f"Employees in Human Resources:        {hr}")
-print(f"Employees in Account:                {acctg}")
-print(f"Employees in Sales:                  {sales}")
-print(f"Employees in Auditing:               {audit}")
-print("-" * 90)
-print(f"Total Number of Employees:          {len(first_name)}")
-print("\nThank you for using the program. Goodbye.\n")
