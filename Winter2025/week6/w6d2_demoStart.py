@@ -125,6 +125,49 @@ while ans == "y":
         #               * requires the collection to be SORTED (ORDERED)
         #                       ascending or descending ; alpha or numeric
 
+
+        #Bubble Sort --> higher values 'bubble' to the bottom of the collection
+        #below is sorting for ascending alpha order
+        for i in range(0, len(name) -1):
+            for j in range(0, len(name) -1):
+                if name[j] > name[j + 1]:
+                    #they must swap places because the higher value must come afterwards
+                    temp = name[j]
+                    name[j] = name[j + 1]
+                    name[j + 1] = temp
+
+                    #use the function to cut down on coding and potential errors!
+                    swap(j, class_type)
+                    swap(j, meaning)
+                    swap(j, culture)
+
+        #chaeck our bubble sort --> sorting in ascending order by name
+        display("x", len(name))
+
+        #Binary Search: Must be performed on order/sorted lists populated with unique value - can only find one item or value
+
+        min = 0                         #lowest possible idex
+        max = len(name) - 1             #highest index
+        mid = int((min + max) / 2)     #middle index in sorted list
+
+        while min < max and search.lower() != name[mid].lower():
+            #while above is true, list is not yet exhausted and we haven't found what we are looking for so, must go through another search iteration!
+            if search.lower() < name[mid].lower():
+                max = mid - 1
+            else:
+                #search > name[mid]
+                min = mid + 1
+            
+            mid = int((min + max) / 2)
+
+        if search.lower() == name[mid].lower():
+            print(f"Huzzah! We have found your serach for {search}, see details below:")
+            display(mid, len(name))
+        else:
+            print(f"Sorry, we could not find your serach for {search}. Please try again.")
+
+
+        #Binary Search:
         
     elif search_type == "3":
         print(f"\nYou have chosen to search by MEANING")
