@@ -178,8 +178,6 @@ while ans == "y":
         
         #allow the user to search for a KEYWORD within the meaning[] values
 
-        found = []
-
         for i in range(0, len(meaning)):
             if search.lower() in meaning[i].lower():
                 found.append(i)
