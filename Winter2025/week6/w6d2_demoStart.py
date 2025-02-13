@@ -74,6 +74,8 @@ while ans != "y" and ans != "n":
 
 #main searching loop
 while ans == "y":
+    found = [] #reset found list so each new menu/search is is empty
+    
     print("\tSEARCHING MENU")
     print("1. Search by TYPE") #shows all of either elf or dragon
     print("2. Search by NAME") #binary search review
@@ -172,9 +174,22 @@ while ans == "y":
     elif search_type == "3":
         print(f"\nYou have chosen to search by MEANING")
 
-        search = input("Which name meaning are you looking for:").lower()
+        search = input("Which name meaning are you looking for:").lower()    
         
         #allow the user to search for a KEYWORD within the meaning[] values
+
+        found = []
+
+        for i in range(0, len(meaning)):
+            if search.lower() in meaning[i].lower():
+                found.append(i)
+
+        if not found:
+            print(f"Sorry, we could not find your search for {search}. Please try again.")
+
+        else:
+            print(f"Huzzah! We have found your search for {search}, see details below:")
+            display("x", len(found))
        
 
     elif search_type == "4":
