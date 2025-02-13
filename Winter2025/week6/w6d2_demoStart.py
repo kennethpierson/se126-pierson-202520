@@ -47,6 +47,8 @@ name = []
 meaning = []
 culture = []
 
+found = []
+
 with open("text_files/party.csv", encoding="utf-8") as csvfile:
     file = csv.reader(csvfile)
 
@@ -59,6 +61,9 @@ with open("text_files/party.csv", encoding="utf-8") as csvfile:
 
 #display whole list data to user
 display("x",len(class_type)) #practice with function
+
+#display one row of data from the file
+display(16, len(name))
 
 ans = input("Would you like to enter the search program? [y/n]").lower()
 
@@ -86,8 +91,27 @@ while ans == "y":
         
         
         #allow the user to search for a certain TYPE and then display ALL records (multi) with that type
-        search = input("Which type: 'dragon' or 'elf':").lower()
+        search = input("Which type: 'dragon' or 'elf':")
 
+        #show all values in class_type of either dragon or flf --> sequential search
+        if search not in ["dragon" , "elf"]:
+            print("Sorry, only 'dragon of 'elf' are accepted, Please try again.")
+
+
+        else:
+            #sequential search for multiple values mathcing search term
+            found = []
+
+            for i in range(0, len(class_type)):
+                if search.lower() == class_type[i].lower():
+                    found.append(i) #add current index (location) of found item to the 'found' list
+
+            #display results
+            if not found: #if the found list is still empty
+                print(f"Sorry, your serach for {search} came up empty :[")
+            else:
+                #call display() to show the values
+                display("x", len(found))
        
 
     elif search_type == "2":
