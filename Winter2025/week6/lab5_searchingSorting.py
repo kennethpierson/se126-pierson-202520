@@ -144,6 +144,42 @@ while answer == "y":
                 found.append(i)
         display("x", len(found))
 
+    elif search_type == "4":
+        print(f"\nYou have chosen to search by Title")
+
+        search = input("Which Title are you looking for:").lower()    
+        
+        #allow the user to search for a KEYWORD within the meaning[] values
+
+        for i in range(0, len(title)):
+            if search.lower() in title[i].lower():
+                found.append(i)
+
+        if not found:
+            print(f"Sorry, we could not find your search for {search}. Please try again.")
+
+        else:
+            print(f"We have found your search for {search}, see details below:")
+            display("x", len(found))
+
+    elif search_type == "5":
+        print(f"\nYou have chosen to search by Author")
+
+        search = input("Which Author are you looking for:").lower()    
+        
+        #allow the user to search for a KEYWORD within the meaning[] values
+
+        for i in range(0, len(author)):
+            if search.lower() in author[i].lower():
+                found.append(i)
+
+        if not found:
+            print(f"Sorry, we could not find your search for {search}. Please try again.")
+
+        else:
+            print(f"We have found your search for {search}, see details below:")
+            display("x", len(found))
+
 
     elif search_type == "8":
         print(f"\nYou have chosen to EXIT")
