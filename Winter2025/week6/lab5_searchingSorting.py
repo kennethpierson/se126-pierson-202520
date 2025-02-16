@@ -83,14 +83,14 @@ while answer == "y":
     print("SEARCHING MENU")
     print("1. Show All Titles") #list all book data to the user alphabetically by title
     print("2. Show All Available") #show all titles with status “available”
-    print("3. Show All On Loan") #show all titles with status “available
-    print("4. Search by Title ") #show all titles with status “available
-    print("5. Show All On Loan") #show all titles with status “available
-    print("6. Show All On Loan") #show all titles with status “available
-    print("7. Show All On Loan") #show all titles with status “available
+    print("3. Show All On Loan") #show all titles with status “on loan”
+    print("4. Search by Title ") #allow for an entire title or a title key word
+    print("5. Search by Author") #show all titles of the searched-for author
+    print("6. Search by Genre") #show all titles of the searched-for genre
+    print("7. Search by Library Number") #only allow for one specific library number item
     print("8. EXIT")
 
-    search_type = input("\nHow would you like to search today? [1-4]: ")
+    search_type = input("\nHow would you like to search today? [1-8]: ")
 
     #using 'not in' for user validity checks
     if search_type not in ["1", "2", "3", "4", "5", "6", "7", "8"]:
