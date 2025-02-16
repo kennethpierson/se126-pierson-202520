@@ -44,6 +44,12 @@ def display(x, records):
             print(f"{library_num[i]:12}  {title[i]:35}  {author[i]:25}  {genre[i]:15}   {page_count[i]:5}  {status[i]}")
 
     print("-" * 115)
+
+def swap(i, listName):
+    temp = listName[i]
+    listName[i] = listName[i + 1]
+    listName[i + 1] = temp
+
 #--MAIN EXECUTING CODE---------------------------------
 
 #create an empty list for every potential field in the file
@@ -94,4 +100,30 @@ while answer == "y":
 
     #using 'not in' for user validity checks
     if search_type not in ["1", "2", "3", "4", "5", "6", "7", "8"]:
-         print("***INVALID ENTRY!***\nPlease try again")
+         print("\n***INVALID ENTRY! Please try again***\n")
+    elif search_type == "1":
+        print(f"\nYou have chosen to Show All Titles")
+        #BINARY SEARCH: 
+        #               * requires a collection of UNIQUE values to search through
+        #               * requires the collection to be SORTED (ORDERED)
+        #                       ascending or descending ; alpha or numeric
+
+        #Bubble Sort --> higher values 'bubble' to the bottom of the collection
+        #below is sorting for ascending alpha order
+        for i in range(0, len(title) -1):
+            for j in range(0, len(title) -1):
+                if title[j] > title[j + 1]:
+                    #they must swap places because the higher value must come afterwards
+                    temp = title[j]
+                    title[j] = title[j + 1]
+                    title[j + 1] = temp
+
+                    #use the function to cut down on coding and potential errors!
+                    swap(j, library_num)
+                    swap(j, author)
+                    swap(j, genre)
+                    swap(j, page_count)
+                    swap(j, status)
+
+        #chaeck our bubble sort --> sorting in ascending order by name
+        display("x", len(title))
