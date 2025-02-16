@@ -86,7 +86,7 @@ answer = "y"
 while answer == "y":
     found = [] #reset found list so each new menu/search is is empty
     
-    print("SEARCHING MENU")
+    print("\nSEARCHING MENU")
     print("1. Show All Titles") #list all book data to the user alphabetically by title
     print("2. Show All Available") #show all titles with status “available”
     print("3. Show All On Loan") #show all titles with status “on loan”
@@ -127,3 +127,24 @@ while answer == "y":
 
         #chaeck our bubble sort --> sorting in ascending order by name
         display("x", len(title))
+    
+    elif search_type == "2":
+        print(f"\nYou have chosen to Show All Available")
+        search = "available"
+        for i in range(0, len(status)):
+            if search == status[i]:
+                found.append(i)
+        display("x", len(found))
+
+    elif search_type == "3":
+        print(f"\nYou have chosen to Show All On Loan")
+        search = "on loan"
+        for i in range(0, len(status)):
+            if search == status[i]:
+                found.append(i)
+        display("x", len(found))
+
+
+    elif search_type == "8":
+        print(f"\nYou have chosen to EXIT")
+        answer = "n"
