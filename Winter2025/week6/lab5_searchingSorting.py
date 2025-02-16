@@ -1,6 +1,6 @@
 #Ken Pierson
 #SE126.04
-#Lab % Searching & Sorting
+#Lab 5 Searching & Sorting
 #2-15-2025
 
 #PROGRAM PROMPT: Build a personal library search system using the file book_list.csv. Store the file data into 1D parallel lists, then use the appropriate searching algorithms for the menu system options.  Your program should give your user the following menu:
@@ -17,12 +17,18 @@
 
 
 #variable dictionary
+#library_num     List for library numbers
+#title           List for book titles
+#author          List for book authors
+#genre           List for book genres
+#page_count      List for book page counts
+#status          List for book status
+#found           Used to store variables
 
 
 #--IMPORTS---------------------------------------------
 import csv
 #--FUNCITONS-------------------------------------------
-
 def display(x, records):
         #PARAMETERS: x   signifier for if we are printing a single record or multiple
         #when x != "x" it is an integere index and we have one value, otherwise we have multiple
@@ -32,17 +38,14 @@ def display(x, records):
     if x != "x":
         #printing one record
         print(f"{library_num[x]:12}  {title[x]:35}  {author[x]:25}  {genre[x]:15}   {page_count[x]:5}  {status[x]}")
-
     elif found:
         #printing multiples, based on length stored in 'foundList'
         for i in range(0, records):
             print(f"{library_num[found[i]]:12}  {title[found[i]]:35}  {author[found[i]]:25}  {genre[found[i]]:15}   {page_count[found[i]]:5}  {status[found[i]]}") 
-    
     else:
         #printing full data, based on length stored in 'records'
         for i in range(0, records):
             print(f"{library_num[i]:12}  {title[i]:35}  {author[i]:25}  {genre[i]:15}   {page_count[i]:5}  {status[i]}")
-
     print("-" * 115)
 
 def swap(i, listName):
@@ -51,9 +54,7 @@ def swap(i, listName):
     listName[i + 1] = temp
 
 #--MAIN EXECUTING CODE---------------------------------
-
 #create an empty list for every potential field in the file
-
 library_num = []
 title = []
 author = []
@@ -76,17 +77,14 @@ with open("text_files/book_list.csv") as csvfile:
         status.append(rec[5])
 
 #disconnect from file-----------------------------------
-
 #display whole list data to user
-display("x",len(library_num)) #practice with function
+#display("x",len(library_num))
 
 #main searching loop
-
 answer = "y"
 while answer == "y":
     found = [] #reset found list so each new menu/search is is empty
-    
-    print("\nSEARCHING MENU")
+    print("\n***Personal Library Menu***")
     print("1. Show All Titles") #list all book data to the user alphabetically by title
     print("2. Show All Available") #show all titles with status “available”
     print("3. Show All On Loan") #show all titles with status “on loan”
@@ -96,7 +94,7 @@ while answer == "y":
     print("7. Search by Library Number") #only allow for one specific library number item
     print("8. EXIT")
 
-    search_type = input("\nHow would you like to search today? [1-8]: ")
+    search_type = input("\nWhat would you like to search today? [1-8]: ")
 
     #using 'not in' for user validity checks
     if search_type not in ["1", "2", "3", "4", "5", "6", "7", "8"]:
@@ -125,8 +123,8 @@ while answer == "y":
                     swap(j, page_count)
                     swap(j, status)
 
-        #chaeck our bubble sort --> sorting in ascending order by name
-        display("x", len(title))
+        #check bubble sort --> sorting in ascending order by name
+        display("x", len(title)) #call display() to show the values
     
     elif search_type == "2":
         print(f"\nYou have chosen to Show All Available")
@@ -134,7 +132,7 @@ while answer == "y":
         for i in range(0, len(status)):
             if search == status[i]:
                 found.append(i)
-        display("x", len(found))
+        display("x", len(found)) #call display() to show the values
 
     elif search_type == "3":
         print(f"\nYou have chosen to Show All On Loan")
@@ -142,45 +140,79 @@ while answer == "y":
         for i in range(0, len(status)):
             if search == status[i]:
                 found.append(i)
-        display("x", len(found))
+        display("x", len(found)) #call display() to show the values
 
     elif search_type == "4":
-        print(f"\nYou have chosen to search by Title")
+        print(f"\nYou have chosen to search by Title\n")
 
-        search = input("Which Title are you looking for:").lower()    
+        search = input("Which Title are you looking for: ").lower()    
         
-        #allow the user to search for a KEYWORD within the meaning[] values
+        #allow the user to search for a KEYWORD within the title[] values
 
         for i in range(0, len(title)):
             if search.lower() in title[i].lower():
                 found.append(i)
 
         if not found:
-            print(f"Sorry, we could not find your search for {search}. Please try again.")
+            print(f"\nSorry, we could not find your search for {search}. Please try again.")
 
         else:
-            print(f"We have found your search for {search}, see details below:")
-            display("x", len(found))
+            print(f"\nWe have found your search for {search}, see details below:\n")
+            display("x", len(found)) #call display() to show the values
 
     elif search_type == "5":
-        print(f"\nYou have chosen to search by Author")
+        print(f"\nYou have chosen to search by Author\n")
 
-        search = input("Which Author are you looking for:").lower()    
-        
-        #allow the user to search for a KEYWORD within the meaning[] values
+        search = input("Which Author are you looking for: ").lower()    
 
         for i in range(0, len(author)):
             if search.lower() in author[i].lower():
                 found.append(i)
 
         if not found:
-            print(f"Sorry, we could not find your search for {search}. Please try again.")
+            print(f"\nSorry, we could not find your search for {search}. Please try again.")
 
         else:
-            print(f"We have found your search for {search}, see details below:")
-            display("x", len(found))
+            print(f"\nWe have found your search for {search}, see details below:\n")
+            display("x", len(found)) #call display() to show the values
 
+    elif search_type == "6":
+        print(f"\nYou have chosen to search by Genre\n")
+
+        search = input("Which Genre are you looking for:").lower()    
+        
+        for i in range(0, len(genre)):
+            if search.lower() in genre[i].lower():
+                found.append(i)
+
+        if not found:
+            print(f"\nSorry, we could not find your search for {search}. Please try again.")
+
+        else:
+            print(f"\nWe have found your search for {search}, see details below:")
+            display("x", len(found)) #call display() to show the values
+
+    elif search_type == "7":
+        print(f"\nYou have chosen to search by Library Number")
+        
+        search = input("Which Library Number are you looking for:")
+        #using 'not in' for user validity checks
+        if search not in ["1232", "1234", "1235", "1236", "1237", "1238", "1239", "1240", "1241", "1242", "1243", "1244", "1245", "1246", "1247", "1248", "1249", "1250", "1251", "1253"]:
+            print("\nSorry, wrong library number, Please try again.")
+
+        else:
+            for i in range(0, len(library_num)):
+                if search == library_num[i]:
+                    found.append(i)
+
+            #display results
+            if not found: #if the found list is still empty
+                print(f"\nSorry, your serach for {search} came up empty :[")
+            else:
+                #call display() to show the values
+                display("x", len(found))
 
     elif search_type == "8":
-        print(f"\nYou have chosen to EXIT")
+        #exiting output display
+        print(f"\nYou are now exiting the program. Thank you for searching!")
         answer = "n"
