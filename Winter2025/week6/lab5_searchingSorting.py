@@ -197,7 +197,7 @@ while answer == "y":
         
         search = input("Which Library Number are you looking for:")
         #using 'not in' for user validity checks
-        if search not in ["1232", "1234", "1235", "1236", "1237", "1238", "1239", "1240", "1241", "1242", "1243", "1244", "1245", "1246", "1247", "1248", "1249", "1250", "1251", "1253"]:
+        if search not in library_num:
             print("\nSorry, wrong library number, Please try again.")
 
         else:
