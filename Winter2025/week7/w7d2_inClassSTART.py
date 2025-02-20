@@ -138,3 +138,20 @@ print("\nThank you for using my program.\n\t\tGOODBYE!\n")
 #------2D Lists ----------------------------------------------------------------------------------------------
 #2D lists are just lists that contain 1D lists inside of them! 
 
+print("\n2D LISTS---------------------------------------------")
+dataFile = []
+
+with open("text_files/simple-2.csv") as csvfile:
+    file = csv.reader(csvfile)
+
+    for rec in file:
+        dataFile.append(rec)
+
+for i in range(0, len(dataFile)):
+    print(f"dataFile[{i}]: {dataFile[i]}")
+    for j in range(0, len(dataFile[i])):
+        #print(f"dataFile[{i}[{j}]: {dataFile[i][j]}")
+        print(f"{dataFile[i][j]} ", end="")
+    print()
+
+    
