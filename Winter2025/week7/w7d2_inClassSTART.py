@@ -8,7 +8,7 @@ import csv
 
 
 def menu():
-    print("Simple Searching Menu")
+    print("\nSimple Searching Menu")
     print("1. Search by NAME")
     print("2. Search by NUM")
     print("3. Search by COLOR")
@@ -31,7 +31,7 @@ colors = []
 #we will use the below hand-populated list
 valid_menu = ["1", "2", "3", "4"]
 
-with open("text_files/simple.csv") as csvfile: 
+with open("text_files/simple-2.csv") as csvfile: 
     file = csv.reader(csvfile)
 
     for rec in file: 
@@ -44,19 +44,88 @@ ans = "y"
 while ans == "y":
     choice = menu()
 
-    if choice != "1" and choice != "2" and choice != "3" and choice != "4": 
+    if choice not in valid_menu: 
         print("!INVALID ENTRY!\nPlease try again.\n")
 
     elif choice == "1": #search by NAME
         print("\n~Search by NAME~")
 
+        #Bubble Sort --> *Always sort Before we binary search
+        for i in range(len(names) - 1):
+            for j in range(len(names) - 1):
+                if names[j] > names[j + 1]:
+                    #SWAP!
+                    swap(j, colors)
+                    swap(j, names)
+                    swap(j, nums)
+
+        #binary search
+        search = input("Enter the NAME you are looking for: ")
+
+        min = 0                     #First index
+        max = len(names) - 1        #Last index
+        mid = int((min + max) /2)   #Middle index
+
+        while min < max and search.lower() != names[mid].lower():
+            if search.lower() < names[mid].lower():
+                max = mid - 1
+            else:
+                #search.lower() > names[mid].lower()
+                min = mid + 1
+
+            mid = int((min + max) /2)
+
+        if search.lower() == names[mid].lower():
+            #Found It
+            print(f"We found your search for {search}, details below: ")
+            print(f"{"Name":12}  {"Num":3}  {"Collor":10}")
+            print(f"--------------------------------------------------")
+            print(f"{names[mid]:12}  {nums[mid]:12}  {colors[mid]:12}")
+            print(f"--------------------------------------------------")
+        else:
+            print(f"\nYour search for {search} is complete, no match found\n")
+
 
     elif choice == "2": #search by NUM
         print("\n~Search by NUM~")
 
-
     elif choice == "3": #search by COLOR
         print("\n~Search by COLOR~")
+
+        #Bubble Sort --> *Always sort Before we binary search
+        for i in range(len(colors) - 1):
+            for j in range(len(colors) - 1):
+                if colors[j] > colors[j + 1]:
+                    #SWAP!
+                    swap(j, colors)
+                    swap(j, names)
+                    swap(j, nums)
+
+        #binary search
+        search = input("Enter the NAME you are looking for: ")
+
+        min = 0                     #First index
+        max = len(colors) - 1       #Last index
+        mid = int((min + max) /2)   #Middle index
+
+        while min < max and search.lower() != colors[mid].lower():
+            if search.lower() < colors[mid].lower():
+                max = mid - 1
+            else:
+                #search.lower() > names[mid].lower()
+                min = mid + 1
+
+            mid = int((min + max) /2)
+
+        if search.lower() == colors[mid].lower():
+            #Found It
+            print(f"We found your search for {search}, details below: ")
+            print(f"{"Name":12}  {"Num":3}  {"Collor":10}")
+            print(f"--------------------------------------------------")
+            print(f"{names[mid]:12}  {nums[mid]:12}  {colors[mid]:12}")
+            print(f"--------------------------------------------------")
+        else:
+            print(f"\nYour search for {search} is complete, no match found\n")
 
 
     else:
