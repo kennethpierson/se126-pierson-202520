@@ -11,24 +11,55 @@
 #--IMPORTS---------------------------------------------
 import csv
 #--FUNCITONS-------------------------------------------
-def display(x, records):
-        #PARAMETERS: x   signifier for if we are printing a single record or multiple
-        #when x != "x" it is an integere index and we have one value, otherwise we have multiple
-        #records   the length of a list we are going to process through (# of loops/prints)
-    print(f"{'Library #':12}  {'Title':35}  {'Author':25}  {'Genre':15}   {'Pages':5}  {'Status'}")
-    print("-" * 115)
-    if x != "x":
-        #printing one record
-        print(f"{library_num[x]:12}  {title[x]:35}  {author[x]:25}  {genre[x]:15}   {page_count[x]:5}  {status[x]}")
-    elif found:
-        #printing multiples, based on length stored in 'foundList'
-        for i in range(0, records):
-            print(f"{library_num[found[i]]:12}  {title[found[i]]:35}  {author[found[i]]:25}  {genre[found[i]]:15}   {page_count[found[i]]:5}  {status[found[i]]}") 
-    else:
-        #printing full data, based on length stored in 'records'
-        for i in range(0, records):
-            print(f"{library_num[i]:12}  {title[i]:35}  {author[i]:25}  {genre[i]:15}   {page_count[i]:5}  {status[i]}")
-    print("-" * 115)
+def loopcontrol(): #() is empty so NO parameters; this function does not require any info to run
+  ans = input("Would you like to reserve another seat? [y/n]: ").lower()
+  #check the ans value, repeat back to user if necessary
+  while ans != "y" and ans != "n":
+    print("***INVALID ENTRY***")
+    ans = input("Would you like to reserve another seat? [y/n]: ").lower()
+  #return the ans value tp be used in the base program!
+  return ans
+
+def seatMap():
+    print(f"{'ROW':3}   {'A':3} {'B':3}   {'C':3} {'D':3}")
+    print("---------------------------------------------------------------")
+    for i in range(len(seatA)):
+        print(f"{i + 1:3}   {seatA[i]:3} {seatB[i]:3}   {seatC[i]:3} {seatD[i]:3}")
+    print("---------------------------------------------------------------")
 
 #--MAIN EXECUTING CODE---------------------------------
-#create an empty list for every potential field in the file
+#create lists
+
+all_seats = [
+    ['1','A','B','C','D'],
+    ['2','A','B','C','D'],
+    ['3','A','B','C','D'],
+    ['4','A','B','C','D'],
+    ['5','A','B','C','D'],
+    ['6','A','B','C','D'],
+    ['7','A','B','C','D'],
+    ]
+
+for i in range(len(all_seats)):
+    for x in range(len(all_seats[i])):
+        print(all_seats[i][x], end='')
+    print()
+    
+    
+'''
+
+seatA = ['A', 'A', 'A', 'A', 'A', 'A', 'A']
+seatB = ['B', 'B', 'B', 'B', 'B', 'B', 'B']
+seatC = ['C', 'C', 'C', 'C', 'C', 'C', 'C']
+seatD = ['D', 'D', 'D', 'D', 'D', 'D', 'D']
+
+row = int(input("Enter which row you'd like to sit in [1-7]: "))
+seat = input("Enter which seat you'd like to sit in [A/B/C/D]: ")
+
+
+answer = "y"
+
+while answer == "y":
+  
+  answer = loopcontrol()
+'''
