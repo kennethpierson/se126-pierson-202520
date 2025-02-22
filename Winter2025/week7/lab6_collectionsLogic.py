@@ -46,7 +46,7 @@ for i in range(len(all_seats)):
     print()
     
     
-'''
+
 
 seatA = ['A', 'A', 'A', 'A', 'A', 'A', 'A']
 seatB = ['B', 'B', 'B', 'B', 'B', 'B', 'B']
@@ -62,4 +62,3 @@ answer = "y"
 while answer == "y":
   
   answer = loopcontrol()
-'''
