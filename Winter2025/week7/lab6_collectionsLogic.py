@@ -53,116 +53,116 @@ answer = "y"
 while answer == "y":
     row_search = input("Enter the row you'd like to sit in [1-7]: ")
     seat_choice = input("Enter the seat you'd like to sit in [A/B/C/D]: ").upper()
-    if row_search == "1" and seat_choice == "A":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+    if row_search == "1" and seat_choice == "A" and seatA != "X":
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}") 
         seatA[0] = "X"
         seatMap()
     elif row_search == "2" and seat_choice == "A":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatA[1] = "X"
         seatMap()
     elif row_search == "3" and seat_choice == "A":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatA[2] = "X"
         seatMap()
     elif row_search == "4" and seat_choice == "A":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatA[3] = "X"
         seatMap()
     elif row_search == "5" and seat_choice == "A":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatA[4] = "X"
         seatMap()
     elif row_search == "6" and seat_choice == "A":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatA[5] = "X"
         seatMap()
     elif row_search == "7" and seat_choice == "A":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatA[6] = "X"
         seatMap()
     if row_search == "1" and seat_choice == "B":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatB[0] = "X"
         seatMap()
     elif row_search == "2" and seat_choice == "B":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatB[1] = "X"
         seatMap()
     elif row_search == "3" and seat_choice == "B":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatB[2] = "X"
         seatMap()
     elif row_search == "4" and seat_choice == "B":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatB[3] = "X"
         seatMap()
     elif row_search == "5" and seat_choice == "B":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatB[4] = "X"
         seatMap()
     elif row_search == "6" and seat_choice == "B":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatB[5] = "X"
         seatMap()
     elif row_search == "7" and seat_choice == "B":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatB[6] = "X"
         seatMap()
     if row_search == "1" and seat_choice == "C":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatC[0] = "X"
         seatMap()
     elif row_search == "2" and seat_choice == "C":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatC[1] = "X"
         seatMap()
     elif row_search == "3" and seat_choice == "C":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatC[2] = "X"
         seatMap()
     elif row_search == "4" and seat_choice == "C":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatC[3] = "X"
         seatMap()
     elif row_search == "5" and seat_choice == "C":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatC[4] = "X"
         seatMap()
     elif row_search == "6" and seat_choice == "C":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatC[5] = "X"
         seatMap()
     elif row_search == "7" and seat_choice == "C":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatC[6] = "X"
         seatMap()
     if row_search == "1" and seat_choice == "D":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatD[0] = "X"
         seatMap()
     elif row_search == "2" and seat_choice == "D":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatD[1] = "X"
         seatMap()
     elif row_search == "3" and seat_choice == "D":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatD[2] = "X"
         seatMap()
     elif row_search == "4" and seat_choice == "D":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatD[3] = "X"
         seatMap()
     elif row_search == "5" and seat_choice == "D":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatD[4] = "X"
         seatMap()
     elif row_search == "6" and seat_choice == "D":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatD[5] = "X"
         seatMap()
     elif row_search == "7" and seat_choice == "D":
-        print(f"\nYou choose row {row_search} seat {seat_choice}")
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         seatD[6] = "X"
         seatMap()
             
