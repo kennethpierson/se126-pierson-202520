@@ -80,104 +80,229 @@ while answer == "y":
         print("\nThat Seat is Available and has been assigned to you")
         seatA[2] = "X"
         seatMap()
-    elif row_search == "4" and seat_choice == "A":
+    if row_search == "4" and seat_choice == "A" and seatA[3] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "4" and seat_choice == "A" and seatA[3] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatA[3] = "X"
         seatMap()
-    elif row_search == "5" and seat_choice == "A":
+    if row_search == "5" and seat_choice == "A" and seatA[4] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "5" and seat_choice == "A" and seatA[4] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatA[4] = "X"
         seatMap()
-    elif row_search == "6" and seat_choice == "A":
+    if row_search == "6" and seat_choice == "A" and seatA[5] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "6" and seat_choice == "A" and seatA[5] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatA[5] = "X"
         seatMap()
-    elif row_search == "7" and seat_choice == "A":
+    if row_search == "7" and seat_choice == "A" and seatA[6] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "7" and seat_choice == "A" and seatA[6] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatA[6] = "X"
         seatMap()
-    if row_search == "1" and seat_choice == "B":
+    if row_search == "1" and seat_choice == "B" and seatB[0] == "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is NOT Available! Please Try Again")
+        seatMap()
+    elif row_search == "1" and seat_choice == "B" and seatB[0] != "X":
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you") 
         seatB[0] = "X"
         seatMap()
-    elif row_search == "2" and seat_choice == "B":
+    if row_search == "2" and seat_choice == "B" and seatB[1] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "2" and seat_choice == "B" and seatB[1] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatB[1] = "X"
         seatMap()
-    elif row_search == "3" and seat_choice == "B":
+    if row_search == "3" and seat_choice == "B" and seatB[2] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "3" and seat_choice == "B" and seatB[2] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatB[2] = "X"
         seatMap()
-    elif row_search == "4" and seat_choice == "B":
+    if row_search == "4" and seat_choice == "B" and seatB[3] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "4" and seat_choice == "B" and seatB[3] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatB[3] = "X"
         seatMap()
-    elif row_search == "5" and seat_choice == "B":
+    if row_search == "5" and seat_choice == "B" and seatB[4] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "5" and seat_choice == "B" and seatB[4] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatB[4] = "X"
         seatMap()
-    elif row_search == "6" and seat_choice == "B":
+    if row_search == "6" and seat_choice == "B" and seatB[5] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "6" and seat_choice == "B" and seatB[5] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatB[5] = "X"
         seatMap()
-    elif row_search == "7" and seat_choice == "B":
+    if row_search == "7" and seat_choice == "B" and seatB[6] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "7" and seat_choice == "B" and seatB[6] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatB[6] = "X"
         seatMap()
-    if row_search == "1" and seat_choice == "C":
+    if row_search == "1" and seat_choice == "C" and seatC[0] == "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is NOT Available! Please Try Again")
+        seatMap()
+    elif row_search == "1" and seat_choice == "C" and seatC[0] != "X":
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you") 
         seatC[0] = "X"
         seatMap()
-    elif row_search == "2" and seat_choice == "C":
+    if row_search == "2" and seat_choice == "C" and seatC[1] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "2" and seat_choice == "C" and seatC[1] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatC[1] = "X"
         seatMap()
-    elif row_search == "3" and seat_choice == "C":
+    if row_search == "3" and seat_choice == "C" and seatC[2] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "3" and seat_choice == "C" and seatC[2] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatC[2] = "X"
         seatMap()
-    elif row_search == "4" and seat_choice == "C":
+    if row_search == "4" and seat_choice == "C" and seatC[3] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "4" and seat_choice == "C" and seatC[3] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatC[3] = "X"
         seatMap()
-    elif row_search == "5" and seat_choice == "C":
+    if row_search == "5" and seat_choice == "C" and seatC[4] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "5" and seat_choice == "C" and seatC[4] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatC[4] = "X"
         seatMap()
-    elif row_search == "6" and seat_choice == "C":
+    if row_search == "6" and seat_choice == "C" and seatC[5] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "6" and seat_choice == "C" and seatC[5] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatC[5] = "X"
         seatMap()
-    elif row_search == "7" and seat_choice == "C":
+    if row_search == "7" and seat_choice == "C" and seatC[6] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "7" and seat_choice == "C" and seatC[6] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatC[6] = "X"
         seatMap()
-    if row_search == "1" and seat_choice == "D":
+    if row_search == "1" and seat_choice == "D" and seatD[0] == "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is NOT Available! Please Try Again")
+        seatMap()
+    elif row_search == "1" and seat_choice == "D" and seatD[0] != "X":
+        print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you") 
         seatD[0] = "X"
         seatMap()
-    elif row_search == "2" and seat_choice == "D":
+    if row_search == "2" and seat_choice == "D" and seatD[1] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "2" and seat_choice == "D" and seatD[1] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatD[1] = "X"
         seatMap()
-    elif row_search == "3" and seat_choice == "D":
+    if row_search == "3" and seat_choice == "D" and seatD[2] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "3" and seat_choice == "D" and seatD[2] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatD[2] = "X"
         seatMap()
-    elif row_search == "4" and seat_choice == "D":
+    if row_search == "4" and seat_choice == "D" and seatD[3] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "4" and seat_choice == "D" and seatD[3] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatD[3] = "X"
         seatMap()
-    elif row_search == "5" and seat_choice == "D":
+    if row_search == "5" and seat_choice == "D" and seatD[4] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "5" and seat_choice == "D" and seatD[4] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatD[4] = "X"
         seatMap()
-    elif row_search == "6" and seat_choice == "D":
+    if row_search == "6" and seat_choice == "D" and seatD[5] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "6" and seat_choice == "D" and seatD[5] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatD[5] = "X"
         seatMap()
-    elif row_search == "7" and seat_choice == "D":
+    if row_search == "7" and seat_choice == "D" and seatD[6] == "X":
+       print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+       print("\nThat Seat is NOT Available! Please Try Again")
+       seatMap()
+    elif row_search == "7" and seat_choice == "D" and seatD[6] != "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
+        print("\nThat Seat is Available and has been assigned to you")
         seatD[6] = "X"
         seatMap()
     if seatA[0] == "X" and seatA[1] == "X" and seatA[2] == "X" and seatA[3] == "X" and seatA[4] == "X" and seatA[5] == "X" and seatA[6] == "X" and seatB[0] == "X" and seatB[1] == "X" and seatB[2] == "X" and seatB[3] == "X" and seatB[4] == "X" and seatB[5] == "X" and seatB[6] == "X" and seatC[0] == "X" and seatC[1] == "X" and seatC[2] == "X" and seatC[3] == "X" and seatC[4] == "X" and seatC[5] == "X" and seatC[6] == "X" and seatD[0] == "X" and seatD[1] == "X" and seatD[2] == "X" and seatD[3] == "X" and seatD[4] == "X" and seatD[5] == "X" and seatD[6] == "X":
