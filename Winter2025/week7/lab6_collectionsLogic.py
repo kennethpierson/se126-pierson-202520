@@ -35,6 +35,10 @@ seatB = []
 seatC = []
 seatD = []
 
+#we will use the below hand-populated list
+valid_row = ["1", "2", "3", "4", "5", "6", "7"]
+valid_seat = ["A", "B", "C", "D"]
+
 #connecting to the file----------------------------------
 with open("text_files/seats.csv") as csvfile:
     file = csv.reader(csvfile)
@@ -52,7 +56,13 @@ seatMap()
 answer = "y"
 while answer == "y":
     row_search = input("Enter the row you'd like to sit in [1-7]: ")
+    while row_search not in valid_row:
+        print("\n***INVALID ENTRY***\n~Please try again.~\n")
+        row_search = input("Enter the row you'd like to sit in [1-7]: ")
     seat_choice = input("Enter the seat you'd like to sit in [A/B/C/D]: ").upper()
+    while seat_choice not in valid_seat:
+        print("\n***INVALID ENTRY***\n~Please try again.~\n")
+        seat_choice = input("Enter the seat you'd like to sit in [A/B/C/D]: ").upper()
     if row_search == "1" and seat_choice == "A" and seatA[0] == "X":
         print(f"\nYou choose Row: {row_search} Seat: {seat_choice}")
         print("\nThat Seat is NOT Available! Please Try Again")
