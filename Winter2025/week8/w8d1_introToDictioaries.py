@@ -10,7 +10,7 @@
 myCar = {
     #'key' : value, 
     "make": "Ford",
-    "model": "SE Hatchback",
+    "model": "Focus SE Hatchback",
     "year": 2014,
     "name": "Gwendoline",
     "color": "black",
@@ -26,27 +26,28 @@ print(myCar)
 
 #dictionaryName["keyName"] --> accesses stored value
 #"keyName" will always be a STRING index, created by developer
-print(f"My car is a {myCar["make"]} {myCar["model"]}")
+print(f"My car is a {myCar["make"]} {myCar["model"]}. It is {myCar["color"]}.")
 
 #keys cannot be repeated WITHIN a dictionary, but they can be reused across unique dictionary names: myCar vs yourCar
 yourCar = {
     #'key' : value, 
-    "make": "GMC",
-    "model": "Canyon",
-    "year": 2019,
-    "name": "Jolly",
+    "make": "Ford",
+    "model": "F-150",
+    "year": 2024,
+    "name": "Gandalf",
     "color": "black",
-    "friends": ["Ray", "Matt", "Duncan"]
+    "friends" : ["Tyler", "Tony", "Steve"]
 }
 
-print(f"Rob's car is a {yourCar["make"]} {yourCar["model"]}")
-
-#since "friends" gives access to a list, secondary [] are used to point to which value in said list
-print(f"{yourCar["friends"][2]}")
-
-#processing through a dictionary and its keys
-for key in myCar:
-    print(f"{key.upper()} : {myCar[key]}")
+print(f"My car is a {yourCar["make"]} {yourCar["model"]}. It is {yourCar["color"]}.")
 
 #add a key and value to a pre-existing dictionary
 yourCar["plate"] = "12345"
+
+#or use the .update({key:value}) method
+yourCar.update({"wheels" : "4"})
+
+#processing through a dictionary and its keys
+for key in yourCar:
+    #for every key stored to the yourCar dictionary
+    print(f"{key.upper():10}\t{yourCar[key]}")
