@@ -15,6 +15,8 @@
 #Bonus #2 [+10]: Add a menu option “3.5” which will show all of the words in the dictionary, ordered alphabetically in ascending order (A -> Z)  
 
 #variable dictionary
+#valid_menu
+#dictionary_entries
 
 #--IMPORTS---------------------------------------------
 import csv
@@ -83,14 +85,14 @@ while answer == "y":
             print(f"We could not find your search for {search}")
     elif choice == "3":
             print(f"\nYou have chosen to Add a Word\n")
-            new_word = input("Please enter the new word: ")
-            new_def = input(f"Please enter the definition for {new_word}: ")
-            dictionary_entries.update({new_word.lower() : new_def.lower()} )
+            new_word = input("Please enter the new word: ")                     #create a new word
+            new_def = input(f"Please enter the definition for {new_word}: ")    #Create a new definition
+            dictionary_entries.update({new_word.lower() : new_def.lower()} )    #update the dictionary
             for key in dictionary_entries:
                 print(f"{key:15} :  {dictionary_entries[key]}")
     elif choice == "4": 
-            print("\n---EXIT---")
-            answer = "n"
+            print("\n---EXIT---")                                            
+            answer = "n"             #exit the loop
     else:
         print("\t!INVALID ENTRY!")
         #build a way out of the loop - answer should be able to change value!
