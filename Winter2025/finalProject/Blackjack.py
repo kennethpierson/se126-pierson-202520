@@ -29,38 +29,31 @@ def clear():
 def shuffle():
     random.shuffle(deck)
 
-def deal(num):
-    cards_dealt = []
-    for x in range(num):
-        card = deck.pop()
-        cards_dealt.append(card)
-    return cards_dealt
+def deal(deck):
+    return deck.pop()
 
-def value_Convert(rank):
-    value = 0
-    if rank == 'J' or rank == 'Q' or rank == 'K':
-        value = 10
-    elif rank == 'A':
-        print("A")
-        num = input("Do you want this to be 1 or 11?\n>")
-        while num !='1' or num !='11':
-            if num == '1':
-                value = 1
-            elif num == '11':
-                value = 11
-            else:
-                num = input("Do you want this to be 1 or 11?\n>")
+def hand_value(hand):
+    ace_count = hand.count('A')
+    total = 0
+    for card in hand:
+        if card[1].isdigit():
+            total += int(card[1])
+        elif card[1] in ('J', 'Q', 'K'):
+            total += 10
+        elif card[1] == 'A':
+            total += 11
+    while total > 21 and ace_count > 0:
+        total -= 10
+        ace_count -= 1
+    return total
+
+def display_hands(player_hand, dealer_hand, show_all_dealer=False):
+    print(f"\n    Your hand: {player_hand}\t\tValue: {hand_value(player_hand)}")
+    if show_all_dealer:
+        print(f"Dealer's hand: {dealer_hand}\t\tValue: {hand_value(dealer_hand)}")
     else:
-        value = int(rank)
-    return int(value)
+        print(f"Dealer's hand: [{dealer_hand[0]}, {['?', '?']}]")
 
-
-
-def hand_value(card1, card2):
-    h_value = 0
-    for i in cards_dealt:
-        h_value = int(card1 + card2)
-    return h_value
 
 #-Main Code-----------------------------------------------------------------------------------
 
@@ -72,38 +65,68 @@ cards = []
 player = []
 dealer = []
 
-#Counting variable
-
-
 #--connected to file------------------------------------------
 with open("text_files/cards.csv") as csvfile:
 
     file = csv.reader(csvfile)
 
     for rec in file:
-        deck.append(rec)
+        if rec[0] == "Hearts":
+            rec[0] = "♥"
+        elif rec[0] == "Diamonds":
+            rec[0] = "♦"
+        elif rec[0] == "Spades":
+            rec[0] = "♠"
+        elif rec[0] == "Clubs":
+            rec[0] = "♣"
+        
+        for i in range(6):
+            deck.append(rec)
 #--disconnected from file---------------------------------------
 
-#Deck Display
-'''
-print(f"{'SUIT':10} {'RANK'}")
-print("---------------------------------------------")
-for i in range(len(deck)):
-    print(f"{deck[i][0]:10} {deck[i][1]}")
-print("---------------------------------------------")
-'''
 shuffle()
 
-cards_dealt = deal(2)
-print(cards_dealt)
+ans = "y"
 
-print()
-print(cards_dealt[0][1])
-print(cards_dealt[1][1])
+while ans == "y":
+    player_hand = []
+    dealer_hand = []
 
-card1 = value_Convert(cards_dealt[0][1])
-card2 = value_Convert(cards_dealt[1][1])
+    for i in range(2):
+        player_hand.append(deal(deck))
+        dealer_hand.append(deal(deck))
 
+    choice = "y"
 
+    while choice == "y":
+        display_hands(player_hand, dealer_hand)
+        player_choice = input("Hit or Stand? [H/S]: ").lower()
 
-print(hand_value(card1, card2))
+        if player_choice == 'h':
+            player_hand.append(deal(deck))
+            if hand_value(player_hand) > 21:
+                display_hands(player_hand, dealer_hand, show_all_dealer=True)
+                print("You busted! Dealer wins.")
+        elif player_choice == 's':
+            choice = "n"
+        else:
+            print("Invalid input. Please enter 'h' or 's'.")
+
+    while hand_value(dealer_hand) < 17:
+        dealer_hand.append(deal(deck))
+
+    display_hands(player_hand, dealer_hand, show_all_dealer=True)
+
+    player_value = hand_value(player_hand)
+    dealer_value = hand_value(dealer_hand)
+
+    if dealer_value > 21:
+        print("Dealer busts! You win!")
+    elif player_value > dealer_value and player_value <= 21:
+        print("You win!")
+    elif dealer_value == player_value:
+        print("Neither you or the dealer won. Push.")
+    else:
+            print("Dealer wins!")
+    
+    ans = input("Would you like to play another hand? [y/n]: ").lower()
