@@ -86,6 +86,9 @@ while answer == "y":
     elif choice == "3":
             print(f"\nYou have chosen to Add a Word\n")
             new_word = input("Please enter the new word: ")                     #create a new word
+            if new_word in dictionary_entries:
+                print("***Word Already in Dictionary! Please enter a different word***")
+                new_word = input("Please enter the new word: ")
             new_def = input(f"Please enter the definition for {new_word}: ")    #Create a new definition
             dictionary_entries.update({new_word.lower() : new_def.lower()} )    #update the dictionary
             for key in dictionary_entries:
