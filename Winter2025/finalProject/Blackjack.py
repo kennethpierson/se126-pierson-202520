@@ -79,6 +79,37 @@ def display_hands(player_hand, dealer_hand, show_all_dealer=False):
     else:
         print(f"Dealer's hand: [{dealer_hand[0]}, {['?', '?']}]")
 
+def display(x, records):
+   
+    print(f"{'Player Name':15}  {'Wins':4}  {'Losses':6}  {'Ties':4}  {'Avg'}")
+    print("-" * 50)
+    if x != "x":
+        #printing one record
+        print(f"{player_name[x]:15}  {player_wins[x]:4}  {player_losses[x]:6}  {player_push[x]:4}  {player_avg[x]}%")
+    elif found:
+        #printing multiples, based on length stored in 'foundList'
+        for i in range(0, records):
+            print(f"{player_name[found[i]]:15}  {player_wins[found[i]]:4}  {player_losses[found[i]]:6}  {player_push[found[i]]:4}  {player_avg[found[i]]}%") 
+    else:
+        #printing full data, based on length stored in 'records'
+        for i in range(0, records):
+            print(f"{player_name[i]:15}  {player_wins[i]:4}  {player_losses[i]:6}  {player_push[i]:4}  {player_avg[i]}%")
+    print("-" * 50)
+
+def swap(index, listName):
+    temp = listName[index]
+    listName[index] = listName[index + 1]
+    listName[index + 1] = temp
+
+def menu():
+    print("\n***Search Menu***")
+    print("1. Search by NAME")
+    print("2. Search by Wins")
+    print("3. Search by Loses")
+    print("4. EXIT")
+
+    menu_choice = input("Enter your search type [1-4]: ")
+    return menu_choice
 
 #-Main Code-----------------------------------------------------------------------------------
 
@@ -89,8 +120,9 @@ deck = []
 cards = []
 player = []
 dealer = []
+found = []
 
-#counting variables
+#create counting variables
 player_wins = 0
 player_losses = 0
 dealer_wins = 0
@@ -120,7 +152,7 @@ with open("text_files/cards.csv") as csvfile:
 #shuffle deck
 shuffle()
 
-player_name = input("Please Enter your name: ").title()
+player_name = input("Please Enter your name: ").lower()
 
 answer = "y"
 
@@ -192,5 +224,86 @@ print("Thanks for playing! And may the Odds Ever be in Your Favor!\n")
 
 #create and write westeros.csv
 file = open("text_files/blackjackGames.csv", "a")
-file.write(f"{player_name},{player_wins:},{player_losses},{player_push},{player_avg:.0f}\n")
+file.write(f"{player_name},{player_wins},{player_losses},{player_push},{player_avg:.0f}\n")
 file.close()
+
+#create empty list
+player_name = []
+player_wins = []
+player_losses = []
+player_push = []
+player_avg = []
+
+#we will use the below hand-populated list
+valid_menu = ["1", "2", "3"]
+
+#connecting to the file----------------------------------
+with open("text_files/blackjackGames.csv") as csvfile:
+    file = csv.reader(csvfile)
+
+    for rec in file:
+        #parallel lists --> data dispersed across lists, connected by the same index
+        player_name.append(rec[0])
+        player_wins.append(rec[1])
+        player_losses.append(rec[2])
+        player_push.append(rec[3])
+        player_avg.append(rec[4])
+#disconnected from file-----------------------
+
+answer = "y"
+while answer == "y":
+    found = []
+    print("\n***Search Menu***")
+    print("1. Show All Player Names")
+    print("2. Search by Player Names")
+    print("3. EXIT")
+
+    search_type = input("Enter your search type [1-3]: ")
+    
+    #using 'not in' for user validity checks
+    if search_type not in valid_menu: 
+        print("!INVALID ENTRY!\nPlease try again.\n")
+    elif search_type == "1": #search by NAME
+        print("\Show All Player Names")
+
+        #Bubble Sort --> *Always sort Before we binary search
+        for i in range(0, len(player_name) - 1):
+            for j in range(0, len(player_name) - 1):
+                if player_name[j] > player_name[j + 1]:
+                    temp = player_name[j]
+                    player_name[j] = player_name[j + 1]
+                    player_name[j + 1] = temp
+                    #SWAP!
+                    swap(j, player_wins)
+                    swap(j, player_losses)
+                    swap(j, player_push)
+                    swap(j, player_avg)
+        
+        display("x", len(player_name)) #call display() to show the values
+
+    elif search_type == "2":
+        print(f"\nYou have chosen to search by Player Name\n")
+
+        search = input("Which Player are you looking for: ").lower()    
+
+        for i in range(0, len(player_name)):
+            if search.lower() in player_name[i].lower():
+                found.append(i)
+
+        if not found:
+            print(f"\nSorry, we could not find your search for {search}. Please try again.")
+
+        else:
+            print(f"\nWe have found your search for {search}, see details below:\n")
+            display("x", len(found)) #call display() to show the values
+    
+    elif search_type == "3": 
+            print("\n---EXIT---")                                            
+            answer = "n"             #exit the loop
+    else:
+        print("\t!INVALID ENTRY!")
+        #build a way out of the loop - answer should be able to change value!
+        if search_type == "1" or search_type == "2":
+            answer = loopcontrol()
+print("\nThank You for Playing! Good Bye!\n")
+                
