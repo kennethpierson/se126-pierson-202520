@@ -32,6 +32,15 @@ import csv
 #Import Random library for chosen card
 import random
 #-Functions-----------------------------------------------------------------------------------
+def loopcontrol(): #() is empty so NO parameters; this function does not require any info to run
+  ans = input("\nWould you like to play another hand? [y/n]: ").lower()
+  #check the ans value, repeat back to user if necessary
+  while ans != "y" and ans != "n":
+    print("***INVALID ENTRY***")
+    ans = input("Would you like to play another hand? [y/n]: ").lower()
+  #return the ans value tp be used in the base program!
+  return ans
+
 def clear():
     if name == 'nt':        #windows os
         _ = system('cls')
@@ -86,7 +95,8 @@ player_wins = 0
 player_losses = 0
 dealer_wins = 0
 dealer_losses = 0
-count_push = 0
+player_push = 0
+dealer_push = 0
 
 #--connected to file------------------------------------------
 with open("text_files/cards.csv") as csvfile:
@@ -110,9 +120,9 @@ with open("text_files/cards.csv") as csvfile:
 #shuffle deck
 shuffle()
 
-ans = "y"
+answer = "y"
 
-while ans == "y":
+while answer == "y":
     player_hand = []
     dealer_hand = []
 
@@ -124,7 +134,7 @@ while ans == "y":
 
     while choice == "y":
         display_hands(player_hand, dealer_hand)
-        player_choice = input("Hit or Stand? [H/S]: ").lower()
+        player_choice = input("Hit or Stand? [h/s]: ").lower()
 
         if player_choice == 'h':
             player_hand.append(deal(deck))
@@ -159,20 +169,20 @@ while ans == "y":
         player_losses += 1
         print("Dealer win!")
     elif dealer_value == player_value:
-        count_push += 1
+        player_push += 1
+        dealer_push += 1
         print("Neither you or the dealer won. Push.")
     else:
         print()
     
-    ans = input("Would you like to play another hand? [y/n]: ").lower()
+    answer = loopcontrol()
 
-total_hands = player_wins + player_losses + count_push
+total_hands = player_wins + player_losses + player_push
 player_avg = (player_wins/total_hands) * 100
 dealer_avg = (dealer_wins/total_hands) * 100
-print(f"Total Games Played: {total_hands}")
-print()
-print(f"Player had {player_wins} win(s) | {player_losses} loss(es) | {count_push} tie(s)! ")
+print(f"\nTotal Games Played: {total_hands}\n")
+print(f"Player had {player_wins} win(s) | {player_losses} loss(es) | {player_push} tie(s)! ")
 print(f"Winning Percentage is: {player_avg:.0f}%\n ")
-print(f"Dealer had {dealer_wins} win(s) | {dealer_losses} loss(es) | {count_push} tie(s)! ")
+print(f"Dealer had {dealer_wins} win(s) | {dealer_losses} loss(es) | {dealer_push} tie(s)! ")
 print(f"Winning Percentage is: {dealer_avg:.0f}%\n ")
 print("Thanks for playing! And may the Odds Ever be in Your Favor!\n")
