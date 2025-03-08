@@ -120,7 +120,7 @@ with open("text_files/cards.csv") as csvfile:
 #shuffle deck
 shuffle()
 
-player_name = input("Please Enter your name: ")
+player_name = input("Please Enter your name: ").title()
 
 answer = "y"
 
@@ -189,3 +189,8 @@ print(f"Winning Percentage is: {player_avg:.0f}%\n ")
 print(f"Dealer had {dealer_wins} win(s) | {dealer_losses} loss(es) | {dealer_push} tie(s)! ")
 print(f"Winning Percentage is: {dealer_avg:.0f}%\n ")
 print("Thanks for playing! And may the Odds Ever be in Your Favor!\n")
+
+#create and write westeros.csv
+file = open("text_files/blackjackGames.csv", "a")
+file.write(f"{player_name},{player_wins:},{player_losses},{player_push},{player_avg:.0f}\n")
+file.close()
