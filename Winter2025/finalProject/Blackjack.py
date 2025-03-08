@@ -73,7 +73,7 @@ def hand_value(hand):
 
 def display_hands(player_hand, dealer_hand, show_all_dealer=False):
     #Displays hands and if the hand is played out the dealer will show their second card
-    print(f"\n    Your hand: {player_hand}\t\tValue: {hand_value(player_hand)}")
+    print(f"\n    {player_name}'s hand: {player_hand}\t\tValue: {hand_value(player_hand)}")
     if show_all_dealer:
         print(f"Dealer's hand: {dealer_hand}\t\tValue: {hand_value(dealer_hand)}")
     else:
@@ -120,9 +120,12 @@ with open("text_files/cards.csv") as csvfile:
 #shuffle deck
 shuffle()
 
+player_name = input("Please Enter your name: ")
+
 answer = "y"
 
 while answer == "y":
+    
     player_hand = []
     dealer_hand = []
 
@@ -181,7 +184,7 @@ total_hands = player_wins + player_losses + player_push
 player_avg = (player_wins/total_hands) * 100
 dealer_avg = (dealer_wins/total_hands) * 100
 print(f"\nTotal Games Played: {total_hands}\n")
-print(f"Player had {player_wins} win(s) | {player_losses} loss(es) | {player_push} tie(s)! ")
+print(f"{player_name} had {player_wins} win(s) | {player_losses} loss(es) | {player_push} tie(s)! ")
 print(f"Winning Percentage is: {player_avg:.0f}%\n ")
 print(f"Dealer had {dealer_wins} win(s) | {dealer_losses} loss(es) | {dealer_push} tie(s)! ")
 print(f"Winning Percentage is: {dealer_avg:.0f}%\n ")
