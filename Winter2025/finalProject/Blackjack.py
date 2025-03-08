@@ -10,6 +10,20 @@
 #file               Passing the CSV file to the reader method
 #rec                Processing all records in the CSV file
 #i                  Index of each field of data from all records
+#deck               Populated 2D list containing all the cards from the CSV file including rank and suit
+#ace_count          Counts to see if there is an ace in the hand passed to the hand_value() function
+#hand               Hand or 2 cards passed to hand_value() function depending on dealer or player
+#total              Counts total value of hand passed to hand_value() function depending
+#card               1 card containing rank and suit which is passed to hand_value() and prioritizing rank for calculation
+#player_hand        Caclulated hand value of player including suit
+#dealer_hand        Caclulated hand value of dealer including suit
+#show_all_dealer    If this variable is labled true then the user is able to see the dealers card after playing out their hand
+#ans                If this variable = "y" the program will re run [input]
+#choice             If this variable = "y" the player will "hit" if "n" then the play will stand and continue the program
+#player_choice      Asks player if they would like to hit or stand [input]
+#dealer_value       Calucates value of dealer hand against player hand to see who won
+#player_value       Calucates value of player hand against dealer hand to see who won
+
 
 
 #-Imports-------------------------------------------------------------------------------------
@@ -26,13 +40,16 @@ def clear():
     else:                   #linux or mac
         _ = system('clear')
 
-def shuffle():
+def shuffle():      
+    #Shuffles deck of cards for random hand for player and dealer
     random.shuffle(deck)
 
-def deal(deck):
+def deal(deck):     
+    #Pulls last card and removes it from the list 'deck'
     return deck.pop()
 
 def hand_value(hand):
+    #Calculate hand values
     ace_count = hand.count('A')
     total = 0
     for card in hand:
@@ -48,6 +65,7 @@ def hand_value(hand):
     return total
 
 def display_hands(player_hand, dealer_hand, show_all_dealer=False):
+    #Displays hands and if the hand is played out the dealer will show their second card
     print(f"\n    Your hand: {player_hand}\t\tValue: {hand_value(player_hand)}")
     if show_all_dealer:
         print(f"Dealer's hand: {dealer_hand}\t\tValue: {hand_value(dealer_hand)}")
@@ -66,7 +84,7 @@ player = []
 dealer = []
 
 #--connected to file------------------------------------------
-with open("text_files/cards.csv") as csvfile:
+with open("finalProject/cards.csv") as csvfile:
 
     file = csv.reader(csvfile)
 
@@ -84,6 +102,7 @@ with open("text_files/cards.csv") as csvfile:
             deck.append(rec)
 #--disconnected from file---------------------------------------
 
+#shuffle deck
 shuffle()
 
 ans = "y"
