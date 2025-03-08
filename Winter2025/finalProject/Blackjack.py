@@ -23,15 +23,27 @@
 #player_choice      Asks player if they would like to hit or stand [input]
 #dealer_value       Calucates value of dealer hand against player hand to see who won
 #player_value       Calucates value of player hand against dealer hand to see who won
+#player_wins        Counting variable for player wins
+#player_losses      Counting variable for player losses
+#dealer_wins        Counting variable for dealer wins
+#dealer_losses      Counting variable for dealer losses
+#player_push        Counting variable for player ties
+#dealer_push        Counting variable for dealer ties
+#found              variable to hold items from a search
+#player_name        empty list for player names
+#player_wins        empty list for player wins
+#player_losses      empty list for player losses
+#player_push        empty list for player ties
+#player_avg         empty list for player average
+#valid_menu         list for valid menu options
 
-#-Imports-------------------------------------------------------------------------------------
+
+#-----Imports-------------------------------------------------------------------------------------
 #Import os for clear() function
 from os import name, system
-#import the CSV (comma separated value) library
-import csv
-#Import Random library for chosen card
-import random
-#-Functions-----------------------------------------------------------------------------------
+#import the CSV (comma separated value) library and a Random library for chosen card
+import csv, random
+#------Functions-----------------------------------------------------------------------------------
 def loopcontrol(): #() is empty so NO parameters; this function does not require any info to run
   ans = input("\nWould you like to play another hand? [y/n]: ").lower()
   #check the ans value, repeat back to user if necessary
@@ -111,7 +123,7 @@ def menu():
     menu_choice = input("Enter your search type [1-4]: ")
     return menu_choice
 
-#-Main Code-----------------------------------------------------------------------------------
+#-----Main Code-----------------------------------------------------------------------------------
 
 clear()     #Clear Terminal
 
@@ -130,7 +142,7 @@ dealer_losses = 0
 player_push = 0
 dealer_push = 0
 
-#--connected to file------------------------------------------
+#-----connected to file------------------------------------------
 with open("text_files/cards.csv") as csvfile:
 
     file = csv.reader(csvfile)
@@ -147,7 +159,7 @@ with open("text_files/cards.csv") as csvfile:
         
         for i in range(6):
             deck.append(rec)
-#--disconnected from file---------------------------------------
+#-----disconnected from file---------------------------------------
 
 #shuffle deck
 shuffle()
@@ -222,7 +234,7 @@ print(f"Dealer had {dealer_wins} win(s) | {dealer_losses} loss(es) | {dealer_pus
 print(f"Winning Percentage is: {dealer_avg:.0f}%\n ")
 print("Thanks for playing! And may the Odds Ever be in Your Favor!\n")
 
-#create and write westeros.csv
+#create and write blackjackGames.csv
 file = open("text_files/blackjackGames.csv", "a")
 file.write(f"{player_name},{player_wins},{player_losses},{player_push},{player_avg:.0f}\n")
 file.close()
@@ -237,7 +249,7 @@ player_avg = []
 #we will use the below hand-populated list
 valid_menu = ["1", "2", "3"]
 
-#connecting to the file----------------------------------
+#-----connecting to the file----------------------------------
 with open("text_files/blackjackGames.csv") as csvfile:
     file = csv.reader(csvfile)
 
@@ -248,7 +260,7 @@ with open("text_files/blackjackGames.csv") as csvfile:
         player_losses.append(rec[2])
         player_push.append(rec[3])
         player_avg.append(rec[4])
-#disconnected from file-----------------------
+#-----disconnected from file-----------------------
 
 answer = "y"
 while answer == "y":
