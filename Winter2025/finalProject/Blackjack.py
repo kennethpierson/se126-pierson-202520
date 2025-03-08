@@ -29,7 +29,6 @@
 #dealer_losses      Counting variable for dealer losses
 #player_push        Counting variable for player ties
 #dealer_push        Counting variable for dealer ties
-#found              variable to hold items from a search
 #player_name        empty list for player names
 #player_wins        empty list for player wins
 #player_losses      empty list for player losses
@@ -101,7 +100,7 @@ def display(x, records):
     elif found:
         #printing multiples, based on length stored in 'foundList'
         for i in range(0, records):
-            print(f"{player_name[found[i]]:15}  {player_wins[found[i]]:4}  {player_losses[found[i]]:6}  {player_push[found[i]]:4}  {player_avg[found[i]]}%") 
+            print(f"{player_name[mid]:15}  {player_wins[mid]:4}  {player_losses[mid]:6}  {player_push[mid]:4}  {player_avg[mid]}%") 
     else:
         #printing full data, based on length stored in 'records'
         for i in range(0, records):
@@ -264,7 +263,7 @@ with open("text_files/blackjackGames.csv") as csvfile:
 
 answer = "y"
 while answer == "y":
-    found = []
+    
     print("\n***Search Menu***")
     print("1. Show All Player Names")
     print("2. Search by Player Names")
@@ -276,7 +275,7 @@ while answer == "y":
     if search_type not in valid_menu: 
         print("!INVALID ENTRY!\nPlease try again.\n")
     elif search_type == "1": #search by NAME
-        print("\Show All Player Names")
+        print("Show All Player Names")
 
         #Bubble Sort --> *Always sort Before we binary search
         for i in range(0, len(player_name) - 1):
@@ -296,19 +295,27 @@ while answer == "y":
     elif search_type == "2":
         print(f"\nYou have chosen to search by Player Name\n")
 
-        search = input("Which Player are you looking for: ").lower()    
+        search = input("Which Player are you looking for: ").lower()
 
-        for i in range(0, len(player_name)):
-            if search.lower() in player_name[i].lower():
-                found.append(i)
+        min = 0
+        max = len(player_name) - 1
+        mid = int((min + max) / 2)
 
-        if not found:
-            print(f"\nSorry, we could not find your search for {search}. Please try again.")
+        while min < max and search.lower() != player_name[mid].lower():
+            if search.lower() < player_name[mid].lower():
+                max = mid - 1
+            else:
+                min = mid + 1
+            mid = int((min + max) / 2)
 
+        if search.lower() == player_name[mid].lower():
+            print(f"We found your search {search} in record {mid}: ")
+            print(f"\n{'Player Name':15}  {'Wins':4}  {'Losses':6}  {'Ties':4}  {'Avg'}")
+            print("-" * 50)
+            print(f"{player_name[mid]:15}  {player_wins[mid]:4}  {player_losses[mid]:6}  {player_push[mid]:4}  {player_avg[mid]}%")
         else:
-            print(f"\nWe have found your search for {search}, see details below:\n")
-            display("x", len(found)) #call display() to show the values
-    
+            print(f"\nSorry, we could not find your search for {search}. Please try again.")
+   
     elif search_type == "3": 
             print("\n---EXIT---")                                            
             answer = "n"             #exit the loop
